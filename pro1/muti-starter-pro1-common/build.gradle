@@ -1,0 +1,5 @@
+
+description = 'muti-starter-pro1-common'
+dependencies {
+  compile project(':common')
+}

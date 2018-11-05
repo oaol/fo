@@ -1,0 +1,10 @@
+rootProject.name = 'muti-starter'
+include ':pro1:muti-starter-pro1-common'
+include ':pro1:muti-starter-pro1-persistence'
+include ':pro1:muti-starter-pro1-service'
+include ':pro1:muti-starter-pro1-web'
+
+project(':pro1:muti-starter-pro1-common').projectDir = "$rootDir/pro1/muti-starter-pro1-common" as File
+project(':pro1:muti-starter-pro1-persistence').projectDir = "$rootDir/pro1/muti-starter-pro1-persistence" as File
+project(':pro1:muti-starter-pro1-service').projectDir = "$rootDir/pro1/muti-starter-pro1-service" as File
+project(':pro1:muti-starter-pro1-web').projectDir = "$rootDir/pro1/muti-starter-pro1-web" as File
