@@ -1,12 +1,2 @@
 rootProject.name = 'fo'
-include ':fo-common'
-include ':fo-up:fo-up-common'
-include ':fo-up:fo-up-persistence'
-include ':fo-up:fo-up-service'
-include ':fo-up:fo-up-web'
-
-project(':fo-common').projectDir = "$rootDir/fo-common" as File
-project(':fo-up:fo-up-common').projectDir = "$rootDir/fo-up/fo-up-common" as File
-project(':fo-up:fo-up-persistence').projectDir = "$rootDir/fo-up/fo-up-persistence" as File
-project(':fo-up:fo-up-service').projectDir = "$rootDir/fo-up/fo-up-service" as File
-project(':fo-up:fo-up-web').projectDir = "$rootDir/fo-up/fo-up-web" as File
+include 'fo-common', 'fo-up'

@@ -1,5 +1,4 @@
 description = 'fo-common'
-  
 dependencies {
     compile('com.alibaba:fastjson:1.2.49')
     compile('org.apache.commons:commons-lang3:3.4')

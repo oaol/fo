@@ -3,6 +3,8 @@ allprojects  {
 
   group = 'com.fo'
   version = '1.0.0'
+
+    
 }
 
 buildscript {
@@ -15,6 +17,7 @@ buildscript {
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
+  
 }
 
 subprojects {
@@ -22,7 +25,9 @@ subprojects {
   apply plugin: 'eclipse'
   apply plugin: 'org.springframework.boot'
   apply plugin: 'io.spring.dependency-management'
-  sourceCompatibility = 1.8
+  //编译属性
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
   tasks.withType(JavaCompile) {
   	options.encoding = 'UTF-8'
   }
@@ -30,5 +35,12 @@ subprojects {
   repositories {
     mavenCentral()
   }
-
+  bootJar {
+      mainClassName = ''
+  }
+  dependencyManagement {
+	imports {
+		mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+	}
+}
 }

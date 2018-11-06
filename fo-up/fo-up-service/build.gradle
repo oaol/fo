@@ -1,7 +1,0 @@
-
-description = 'fo-up-service'
-dependencies {
-  compile('org.springframework.boot:spring-boot-starter-data-redis')
-  compile('org.springframework.boot:spring-boot-starter-web')
-  compile project(':fo-up:fo-up-persistence')
-}
