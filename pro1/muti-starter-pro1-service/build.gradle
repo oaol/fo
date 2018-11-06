@@ -1,5 +1,0 @@
-
-description = 'muti-starter-pro1-service'
-dependencies {
-  compile project(':pro1:muti-starter-pro1-persistence')
-}

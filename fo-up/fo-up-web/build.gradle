@@ -1,0 +1,5 @@
+
+description = 'fo-up-web'
+dependencies {
+  compile project(':fo-up:fo-up-service')
+}

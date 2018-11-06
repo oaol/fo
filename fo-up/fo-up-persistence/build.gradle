@@ -1,0 +1,7 @@
+
+description = 'fo-up-persistence'
+dependencies {
+    runtime('mysql:mysql-connector-java')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile project(':fo-up:fo-up-common')
+}

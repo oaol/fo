@@ -1,0 +1,9 @@
+description = 'fo-up-common'
+
+dependencies {
+    // compile group: 'com.auth0', name: 'java-jwt', version:'3.2.0'
+    // compile(group: 'org.apache.httpcomponents', name: 'httpclient', version:'4.5') {
+    // exclude(module: 'commons-logging')
+    // }
+    compile project(':fo-common')
+}

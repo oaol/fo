@@ -1,10 +1,12 @@
-rootProject.name = 'muti-starter'
-include ':pro1:muti-starter-pro1-common'
-include ':pro1:muti-starter-pro1-persistence'
-include ':pro1:muti-starter-pro1-service'
-include ':pro1:muti-starter-pro1-web'
+rootProject.name = 'fo'
+include ':fo-common'
+include ':fo-up:fo-up-common'
+include ':fo-up:fo-up-persistence'
+include ':fo-up:fo-up-service'
+include ':fo-up:fo-up-web'
 
-project(':pro1:muti-starter-pro1-common').projectDir = "$rootDir/pro1/muti-starter-pro1-common" as File
-project(':pro1:muti-starter-pro1-persistence').projectDir = "$rootDir/pro1/muti-starter-pro1-persistence" as File
-project(':pro1:muti-starter-pro1-service').projectDir = "$rootDir/pro1/muti-starter-pro1-service" as File
-project(':pro1:muti-starter-pro1-web').projectDir = "$rootDir/pro1/muti-starter-pro1-web" as File
+project(':fo-common').projectDir = "$rootDir/fo-common" as File
+project(':fo-up:fo-up-common').projectDir = "$rootDir/fo-up/fo-up-common" as File
+project(':fo-up:fo-up-persistence').projectDir = "$rootDir/fo-up/fo-up-persistence" as File
+project(':fo-up:fo-up-service').projectDir = "$rootDir/fo-up/fo-up-service" as File
+project(':fo-up:fo-up-web').projectDir = "$rootDir/fo-up/fo-up-web" as File
