@@ -6,6 +6,6 @@
 target
 *.log
 *.log.*
-/build/
+build/
 *.settings
 /bin/
