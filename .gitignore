@@ -8,5 +8,5 @@ target
 *.log.*
 build/
 *.settings
-/bin/
+bin/
 .gradle
