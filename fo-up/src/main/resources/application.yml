@@ -22,10 +22,6 @@ spring:
       # Max Request Size
       max-request-size: 215MB
 
-logging:
-  level:
-    ai.silot.gateway.mapper: DEBUG
-
 server:
   port: 8089
   servlet:
