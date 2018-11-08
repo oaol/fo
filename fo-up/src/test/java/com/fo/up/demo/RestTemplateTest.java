@@ -16,7 +16,7 @@ public class RestTemplateTest {
     
     @Test
     public void test() {
-        String ss = this.restTemplate.getForObject("http://bing.com", String.class);
+        String ss = this.restTemplate.getForObject("https://spring.io", String.class);
         System.out.println(ss);
     }
 
