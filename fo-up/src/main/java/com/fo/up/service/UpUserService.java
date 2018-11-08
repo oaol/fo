@@ -16,5 +16,12 @@ public interface UpUserService {
      * @return
      */
     public UpUser addUser(UpUser upser);
+    
+    
+   /* *//**
+     * 更新用户
+     *//*
+    public void updateUser(String name);
+*/
 
 }

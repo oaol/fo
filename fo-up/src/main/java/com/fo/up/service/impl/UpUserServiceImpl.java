@@ -1,7 +1,11 @@
 package com.fo.up.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fo.up.core.exception.UpException;
 import com.fo.up.entity.UpUser;
@@ -43,6 +47,19 @@ public class UpUserServiceImpl implements UpUserService {
 		}
 		return upUserRepository.save(user);
 	}
+
+	
+
+/*	*//**
+     * 更新用户
+     *//*
+	public void updateUser(String name) {
+		upUserRepository.updateUser(name);
+	}*/
+
+	
+	
+	
 
   
 }
