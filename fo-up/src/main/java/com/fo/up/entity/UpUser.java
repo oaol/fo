@@ -11,13 +11,13 @@ public class UpUser {
     @GeneratedValue
     private Long userId;// 编号
     @Column(nullable = false)
-    private String userName;// 帐号
+    private String username;// 帐号
     @Column(nullable = false)
     private String password;// 密码MD5(密码+盐)
     @Column(nullable = false)
     private String salt;// 盐'
     @Column(nullable = true)
-    private String realName;// '姓名'
+    private String realname;// '姓名'
     @Column(nullable = true)
     private String avatar;// 头像
     @Column(nullable = true)
@@ -31,23 +31,40 @@ public class UpUser {
     @Column(nullable = true)
     private long ctime;// 创建时间
 
-    public Long getUserId() {
-        return userId;
-    }
+   
+	public Long getUserId() {
+		return userId;
+	}
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public String getPassword() {
+	public String getRealname() {
+		return realname;
+	}
+
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
+
+	public long getCtime() {
+		return ctime;
+	}
+
+	public void setCtime(long ctime) {
+		this.ctime = ctime;
+	}
+
+	public String getPassword() {
         return password;
     }
 
@@ -63,13 +80,7 @@ public class UpUser {
         this.salt = salt;
     }
 
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
+  
 
     public String getAvatar() {
         return avatar;

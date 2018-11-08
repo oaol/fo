@@ -1,6 +1,7 @@
 package com.fo.up.dto;
 
 public class UploadFileResponse {
+    // file name
     private String fileName;
     private String fileDownloadUri;
     private String fileType;
