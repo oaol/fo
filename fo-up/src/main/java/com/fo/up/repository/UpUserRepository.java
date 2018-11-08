@@ -9,10 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fo.up.entity.UpUser;
 
 public interface UpUserRepository extends JpaRepository<UpUser, Long>{
-	/*@Modifying(clearAutomatically = true)
+	@Modifying(clearAutomatically = true)
 	@Transactional
-	@Query("update up_user u set u.password = 123455 where u.username = :name ")
-	public   void updateUser(@Param(value = "name") String name);*/
+	@Query("update UpUser u set u.password = :pass where u.username = :name ")
+	public   void updateUser(@Param(value = "pass") String pass,@Param(value = "name") String name);
 	
 
 
