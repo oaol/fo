@@ -3,18 +3,19 @@ package com.fo.up.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class UpUser {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;// 编号
     @Column(nullable = false)
     private String username;// 帐号
     @Column(nullable = false)
     private String password;// 密码MD5(密码+盐)
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String salt;// 盐'
     @Column(nullable = true)
     private String realname;// '姓名'

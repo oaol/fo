@@ -1,11 +1,20 @@
 package com.fo.up.service;
 
-import java.util.List;
 
 import com.fo.up.entity.UpUser;
 
 public interface UpUserService {
+	/**
+	 * 根据id查找user
+	 * @param id
+	 * @return
+	 */
     public UpUser getUserById(Long id);
+    
+    /**
+     * 新增用户
+     * @return
+     */
+    public UpUser addUser(UpUser upser);
 
-    public List<UpUser> findUpUserById(Long id);
 }
