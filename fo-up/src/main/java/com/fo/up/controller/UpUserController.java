@@ -29,9 +29,9 @@ public class UpUserController {
     	return upUserService.addUser(user);
     }
     
-   /* @PutMapping(value="/update")
-    public void updateUser(String name){
-    	upUserService.updateUser(name);
-    }*/
+    @PutMapping(value="/update")
+    public void updateUser(String pass,String name){
+    	upUserService.updateUser(pass,name);
+    }
     
 }

@@ -18,10 +18,10 @@ public interface UpUserService {
     public UpUser addUser(UpUser upser);
     
     
-   /* *//**
+    /**
      * 更新用户
-     *//*
-    public void updateUser(String name);
-*/
+     */
+    public void updateUser(String pass,String name);
+
 
 }

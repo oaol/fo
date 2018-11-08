@@ -50,12 +50,12 @@ public class UpUserServiceImpl implements UpUserService {
 
 	
 
-/*	*//**
+	/**
      * 更新用户
-     *//*
-	public void updateUser(String name) {
-		upUserRepository.updateUser(name);
-	}*/
+     */
+	public void updateUser(String pass,String name) {
+		upUserRepository.updateUser(pass,name);
+	}
 
 	
 	
