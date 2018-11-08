@@ -11,7 +11,7 @@ import com.fo.up.entity.UpUser;
 import com.fo.up.service.UpUserService;
 
 @RestController
-@RequestMapping(value="/up/user")
+@RequestMapping(value="/user")
 public class UpUserController {
 
     @Autowired
