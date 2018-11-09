@@ -58,7 +58,7 @@ public class UpUserController {
     	upUser.setUserId(userId);
     	upUser.setUsername(username);
         UpResult<Page<UpUser>> upResult = new UpResult<Page<UpUser>>();
-        Page<UpUser> findUserByPage = upUserService.findUserByPage(upUser, PageRequest.of(0, 1));
+        Page<UpUser> findUserByPage = upUserService.findUserByPage(upUser, PageRequest.of(page, pageSize));
         upResult.setData(findUserByPage);
         return upResult;
     }
