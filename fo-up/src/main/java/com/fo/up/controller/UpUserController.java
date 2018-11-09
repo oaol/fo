@@ -2,12 +2,18 @@ package com.fo.up.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fo.up.core.constant.UpResult;
+import com.fo.up.entity.UpPermission;
 import com.fo.up.entity.UpUser;
 import com.fo.up.service.UpUserService;
 
@@ -38,4 +44,22 @@ public class UpUserController {
     	upUserService.updateUser(pass,name);
     }
     
+    @DeleteMapping
+    public void deleteById(Long id){
+    	upUserService.deleteById(id);
+    }
+    
+    
+    @GetMapping( value = "/page")
+    public UpResult<Page<UpUser>> findUserByPage(
+            @RequestParam(value = "username", required = false) String username, 
+            @RequestParam( value = "userId", required = false) Long userId){
+    	UpUser upUser = new UpUser();
+    	upUser.setUserId(userId);
+    	upUser.setUsername(username);
+        UpResult<Page<UpUser>> upResult = new UpResult<Page<UpUser>>();
+        Page<UpUser> findUserByPage = upUserService.findUserByPage(upUser, PageRequest.of(0, 1));
+        upResult.setData(findUserByPage);
+        return upResult;
+    }
 }

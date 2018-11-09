@@ -1,6 +1,10 @@
 package com.fo.up.service;
 
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.fo.up.entity.UpPermission;
 import com.fo.up.entity.UpUser;
 
 public interface UpUserService {
@@ -22,6 +26,19 @@ public interface UpUserService {
      * 更新用户
      */
     public void updateUser(String pass,String name);
-
+    
+    
+    /**
+	 * 根据id删除用户
+	 */
+	public void deleteById(Long id);
+	
+	/**
+	 * 分页查询
+	 * @param upPermission
+	 * @param pageable
+	 * @return
+	 */
+	public Page<UpUser> findUserByPage(UpUser upUser, Pageable pageable);
 
 }

@@ -1,6 +1,9 @@
 package com.fo.up.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -8,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fo.up.core.exception.UpException;
+import com.fo.up.entity.UpPermission;
 import com.fo.up.entity.UpUser;
 import com.fo.up.repository.UpUserRepository;
 import com.fo.up.service.UpUserService;
@@ -59,6 +63,22 @@ public class UpUserServiceImpl implements UpUserService {
 
 	
 	
+	/**
+	 * 根据id删除用户
+	 */
+	public void deleteById(Long id){
+		if(id == null){
+			throw new UpException("删除时id不能为空");
+		}
+		upUserRepository.deleteById(id);
+	}
+	
+	
+	@Override
+    public Page<UpUser> findUserByPage(UpUser upUser, Pageable pageable) {
+        Example<UpUser> example = Example.of(upUser);
+        return upUserRepository.findAll(example, pageable);
+    }
 	
 
   
