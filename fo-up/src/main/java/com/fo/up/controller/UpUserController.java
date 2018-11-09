@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fo.up.core.constant.UpResult;
-import com.fo.up.entity.UpPermission;
 import com.fo.up.entity.UpUser;
 import com.fo.up.service.UpUserService;
 
@@ -36,12 +35,12 @@ public class UpUserController {
     
     @PutMapping
     public UpUser updateUserById(UpUser user){
-        return upUserService.addUser(user);
+        return upUserService.addUser1(user);
     }
     
     @PutMapping(value="/update")
-    public void updateUser(String pass,String name){
-    	upUserService.updateUser(pass,name);
+    public void updateUser(String pass,String salt,String realname,String avatar,String phone,String email,int sex,int locked, Long ctime,Long userId){
+    	upUserService.updateUser(pass, salt, realname, avatar, phone, email, sex, locked, ctime, userId);
     }
     
     @DeleteMapping
@@ -51,9 +50,10 @@ public class UpUserController {
     
     
     @GetMapping( value = "/page")
-    public UpResult<Page<UpUser>> findUserByPage(
-            @RequestParam(value = "username", required = false) String username, 
-            @RequestParam( value = "userId", required = false) Long userId, @RequestParam( value = "page", required = false, defaultValue = "0") Integer page,  @RequestParam( value = "pageSize", required = false, defaultValue = "12")Integer pageSize){
+    public UpResult<Page<UpUser>> findUserByPage(@RequestParam(value = "username", required = false) String username, 
+            @RequestParam( value = "userId", required = false) Long userId,
+            @RequestParam( value = "page", required = false, defaultValue = "0") Integer page, 
+            @RequestParam( value = "pageSize", required = false, defaultValue = "12")Integer pageSize){
     	UpUser upUser = new UpUser();
     	upUser.setUserId(userId);
     	upUser.setUsername(username);

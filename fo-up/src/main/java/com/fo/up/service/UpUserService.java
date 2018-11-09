@@ -4,7 +4,6 @@ package com.fo.up.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.fo.up.entity.UpPermission;
 import com.fo.up.entity.UpUser;
 
 public interface UpUserService {
@@ -21,11 +20,17 @@ public interface UpUserService {
      */
     public UpUser addUser(UpUser upser);
     
+    /**
+     * 更新用户
+     * @return
+     */
+    public UpUser addUser1(UpUser upser);
     
     /**
      * 更新用户
      */
-    public void updateUser(String pass,String name);
+    public void updateUser(String pass,String salt,String realname,String avatar,String phone,String email,int sex,int locked, Long ctime,Long userId) ;
+	
     
     
     /**
