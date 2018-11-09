@@ -53,7 +53,7 @@ public class UpUserController {
     @GetMapping( value = "/page")
     public UpResult<Page<UpUser>> findUserByPage(
             @RequestParam(value = "username", required = false) String username, 
-            @RequestParam( value = "userId", required = false) Long userId){
+            @RequestParam( value = "userId", required = false) Long userId, @RequestParam( value = "page", required = false, defaultValue = "0") Integer page,  @RequestParam( value = "pageSize", required = false, defaultValue = "12")Integer pageSize){
     	UpUser upUser = new UpUser();
     	upUser.setUserId(userId);
     	upUser.setUsername(username);
