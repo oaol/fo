@@ -10,8 +10,5 @@ build/
 *.settings
 bin/
 .gradle
-<<<<<<< HEAD
 WEB-INF/
-=======
 *.DS*
->>>>>>> b298d8eb491c7530bebc84ccf821e08081e122a2
