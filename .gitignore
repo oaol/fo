@@ -11,4 +11,4 @@ build/
 bin/
 .gradle
 WEB-INF/
-*.DS*
+.DS_Store
