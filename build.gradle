@@ -33,4 +33,10 @@ subprojects {
     bootJar {
       mainClassName = ''
     }
+
+    dependencies {
+        runtime('org.springframework.boot:spring-boot-devtools')
+        testCompile('org.springframework.boot:spring-boot-starter-test')
+        compileOnly('org.projectlombok:lombok:1.18.4')
+    }
 }

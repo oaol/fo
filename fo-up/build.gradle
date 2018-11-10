@@ -6,10 +6,7 @@ dependencies {
     compile project(':fo-common')
 
 	runtime('mysql:mysql-connector-java')
-    compile('org.springframework.boot:spring-boot-starter')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-data-redis')
-    compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.springframework.boot:spring-boot-starter-test')
     compile('com.alibaba:fastjson:1.2.49')
 }
