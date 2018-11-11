@@ -38,7 +38,7 @@ public class UpPermissionController {
         upPermission.setName(name);
         upPermission.setPermissionId(permissionId);
         UpResult<Page<UpPermission>> upResult = new UpResult<Page<UpPermission>>();
-        Page<UpPermission> findPermissionByPage = this.upPermissionService.findPermissionByPage(upPermission, PageRequest.of(0, 1));
+        Page<UpPermission> findPermissionByPage = this.upPermissionService.findPermissionByPage(upPermission, PageRequest.of(0, 2));
         upResult.setData(findPermissionByPage);
         return upResult;
     }

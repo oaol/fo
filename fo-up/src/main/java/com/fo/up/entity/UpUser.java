@@ -26,13 +26,12 @@ public class UpUser {
     @Column(nullable = true)
     private String email;// 邮箱
     @Column(nullable = true)
-    private int sex;// 性别
+    private Integer sex;// 性别
     @Column(nullable = true)
-    private int locked;// ״(状态(0:正常,1:锁定)
+    private Integer locked;// ״(状态(0:正常,1:锁定)
     @Column(nullable = true)
-    private long ctime;// 创建时间
+    private Long ctime;// 创建时间
 
-   
 	public Long getUserId() {
 		return userId;
 	}
@@ -57,11 +56,11 @@ public class UpUser {
 		this.realname = realname;
 	}
 
-	public long getCtime() {
+	public Long getCtime() {
 		return ctime;
 	}
 
-	public void setCtime(long ctime) {
+	public void setCtime(Long ctime) {
 		this.ctime = ctime;
 	}
 
@@ -107,19 +106,19 @@ public class UpUser {
         this.email = email;
     }
 
-    public int getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 
-    public int getLocked() {
+    public Integer getLocked() {
         return locked;
     }
 
-    public void setLocked(int locked) {
+    public void setLocked(Integer locked) {
         this.locked = locked;
     }
 
