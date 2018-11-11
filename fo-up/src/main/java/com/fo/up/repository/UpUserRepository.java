@@ -22,8 +22,8 @@ public interface UpUserRepository extends JpaRepository<UpUser, Long>{
 	
 	
 	
-@Query("select u.username from UpUser u")
-public List findUsername();
+@Query("select u.username from UpUser u where u.username = :username")
+public String findUsername(@Param(value = "username") String username);
 		
 		
 	

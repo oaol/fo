@@ -1,10 +1,10 @@
 package com.fo.up.service.impl;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.fo.up.core.exception.UpException;
@@ -37,13 +37,13 @@ public class UpUserServiceImpl implements UpUserService {
      * @return
      */
 	public UpUser addUser(UpUser user) {
-		if (user.getUsername() == null && "".equals(user.getUsername())){
-			throw new UpException("账号不能为空");
-		}else if(upUserRepository.findUsername().contains(user.getUsername())){
+		if (StringUtils.isBlank(user.getUsername())){
+			throw new UpException("用户名不能为空");
+		}else if(upUserRepository.findUsername(user.getUsername()) != null){
 			throw new UpException("用户名不能重复");
 		}
-		if(user.getPassword() == null && "".equals(user.getPassword())){
-			throw new UpException("账密码不能为空");
+		if(StringUtils.isBlank(user.getPassword())){
+			throw new UpException("密码不能为空");
 		}else if (user.getPassword().length() < 6){
 			throw new UpException("密码至少六位");
 		}
@@ -56,10 +56,10 @@ public class UpUserServiceImpl implements UpUserService {
      * @return
      */
 	public UpUser addUser1(UpUser user) {
-		if(user.getUserId() == null && "".equals(user.getUserId())){
+		if(user.getUserId() == null){
 			throw new UpException("传入user_id不能为空");
 		}
-		boolean contains = upUserRepository.findUsername().contains(user.getUsername());
+		boolean contains = upUserRepository.findUsername(user.getUsername()).contains(user.getUsername());
 		if(contains){
 			throw new UpException("用户名不能重复");
 		}
