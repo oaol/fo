@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,9 +42,7 @@ public class UpUserController {
     
     @PutMapping(value="/update")
     public void updateUser(UpUser user){
-    	upUserService.updateUser(user.getPassword(), 
-    	        user.getSalt(), user.getRealname(), user.getAvatar(), 
-    	        user.getPhone(), user.getEmail(), user.getSex(), user.getLocked(), user.getCtime(), user.getUserId());
+    	upUserService.updateUser(user);
     }
     
     @DeleteMapping

@@ -29,7 +29,7 @@ public interface UpUserService {
     /**
      * 更新用户
      */
-    public void updateUser(String pass,String salt,String realname,String avatar,String phone,String email,int sex,int locked, Long ctime,Long userId) ;
+    public void updateUser(UpUser user) ;
 	
     
     

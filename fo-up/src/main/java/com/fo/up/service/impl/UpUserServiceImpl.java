@@ -72,14 +72,16 @@ public class UpUserServiceImpl implements UpUserService {
 	/**
      * 更新用户
      */
-	public void updateUser(String pass,String salt,String realname,String avatar,String phone,String email,int sex,int locked, Long ctime,Long userId) {
-		upUserRepository.updateUser(pass,salt, realname, avatar, phone, email, sex, locked, ctime, userId);
+	@Override
+	public void updateUser(UpUser user) {
+		upUserRepository.updateUser(user);
 	}
 	
 	
 	/**
 	 * 根据id删除用户
 	 */
+	@Override
 	public void deleteById(Long id){
 		if(id == null){
 			throw new UpException("删除时id不能为空");
