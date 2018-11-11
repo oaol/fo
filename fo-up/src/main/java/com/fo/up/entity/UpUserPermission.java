@@ -8,35 +8,35 @@ import javax.persistence.Id;
 public class UpUserPermission {
 	@Id
 	@GeneratedValue
-	private int userPermissionId;//编号
+	private Integer userPermissionId;//编号
 	@Column(nullable = false)
-	private int userId;//用户编号
+	private Integer userId;//用户编号
 	@Column(nullable = false)
-	private int permissionId;//权限编号
+	private Integer permissionId;//权限编号
 	@Column(nullable = false)
-	private int type;//权限类型(-1:减权限,1:增权限)
-	public int getUserPermissionId() {
+	private Integer type;//权限类型(-1:减权限,1:增权限)
+	public Integer getUserPermissionId() {
 		return userPermissionId;
 	}
-	public void setUserPermissionId(int userPermissionId) {
+	public void setUserPermissionId(Integer userPermissionId) {
 		this.userPermissionId = userPermissionId;
 	}
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public int getPermissionId() {
+	public Integer getPermissionId() {
 		return permissionId;
 	}
-	public void setPermissionId(int permissionId) {
+	public void setPermissionId(Integer permissionId) {
 		this.permissionId = permissionId;
 	}
-	public int getType() {
+	public Integer getType() {
 		return type;
 	}
-	public void setType(int type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 	@Override

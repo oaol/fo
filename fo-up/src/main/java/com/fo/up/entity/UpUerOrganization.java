@@ -8,27 +8,27 @@ import javax.persistence.Id;
 public class UpUerOrganization {
 	@Id
 	@GeneratedValue
-	private int userOrganizationId;//编号
+	private Integer userOrganizationId;//编号
 	@Column(nullable = false)
-	private int userId;//用户编号
+	private Integer userId;//用户编号
 	@Column(nullable = false)
-	private int organizationId;//组织编号
-	public int getUserOrganizationId() {
+	private Integer organizationId;//组织编号
+	public Integer getUserOrganizationId() {
 		return userOrganizationId;
 	}
-	public void setUserOrganizationId(int userOrganizationId) {
+	public void setUserOrganizationId(Integer userOrganizationId) {
 		this.userOrganizationId = userOrganizationId;
 	}
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public int getOrganizationId() {
+	public Integer getOrganizationId() {
 		return organizationId;
 	}
-	public void setOrganizationId(int organizationId) {
+	public void setOrganizationId(Integer organizationId) {
 		this.organizationId = organizationId;
 	}
 	@Override
