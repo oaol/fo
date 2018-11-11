@@ -7,25 +7,26 @@ import javax.persistence.Id;
 public class UpOrganization {
 	@Id
 	@GeneratedValue
-	private int organizationId;//编号
+	private Integer organizationId;//编号
 	@Column(nullable = false)
-	private int pid;//所属上级
+	private Integer pid;//所属上级
+	
 	@Column(nullable = true)
 	private String name;//组织名称
 	@Column(nullable = true)
 	private String description;//组织描述
 	@Column(nullable = true)
-	private long cTime;//创建时间'
-	public int getOrganizationId() {
+	private Long cTime;//创建时间'
+	public Integer getOrganizationId() {
 		return organizationId;
 	}
-	public void setOrganizationId(int organizationId) {
+	public void setOrganizationId(Integer organizationId) {
 		this.organizationId = organizationId;
 	}
-	public int getPid() {
+	public Integer getPid() {
 		return pid;
 	}
-	public void setPid(int pid) {
+	public void setPid(Integer pid) {
 		this.pid = pid;
 	}
 	public String getName() {
@@ -40,10 +41,10 @@ public class UpOrganization {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public long getcTime() {
+	public Long getcTime() {
 		return cTime;
 	}
-	public void setcTime(long cTime) {
+	public void setcTime(Long cTime) {
 		this.cTime = cTime;
 	}
 	@Override

@@ -7,15 +7,15 @@ import javax.persistence.Id;
 public class UpLog {
 	@Id
 	@GeneratedValue
-	private int logId;//编号
+	private Integer logId;//编号
 	@Column(nullable = false)
 	private String description;//操作描述
 	@Column(nullable = true)
 	private String userName;//操作用户
 	@Column(nullable = true)
-	private long startTime;//操作时间
+	private Long startTime;//操作时间
 	@Column(nullable = true)
-	private int spendTime;//消耗时间
+	private Integer spendTime;//消耗时间
 	@Column(nullable = true)
 	private String basePath;//根路径
 	@Column(nullable = true)
@@ -34,10 +34,10 @@ public class UpLog {
 	private String result;//
 	@Column(nullable = true)
 	private String permissions;//权限值
-	public int getLogId() {
+	public Integer getLogId() {
 		return logId;
 	}
-	public void setLogId(int logId) {
+	public void setLogId(Integer logId) {
 		this.logId = logId;
 	}
 	public String getDescription() {
@@ -52,16 +52,16 @@ public class UpLog {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public long getStartTime() {
+	public Long getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(long startTime) {
+	public void setStartTime(Long startTime) {
 		this.startTime = startTime;
 	}
-	public int getSpendTime() {
+	public Integer getSpendTime() {
 		return spendTime;
 	}
-	public void setSpendTime(int spendTime) {
+	public void setSpendTime(Integer spendTime) {
 		this.spendTime = spendTime;
 	}
 	public String getBasePath() {

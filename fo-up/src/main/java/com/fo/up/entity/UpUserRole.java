@@ -8,27 +8,27 @@ import javax.persistence.Id;
 public class UpUserRole {
 	@Id
 	@GeneratedValue
-	private int userRoleId;//编号
+	private Integer userRoleId;//编号
 	@Column(nullable = false)
-	private int userId;//用户编号
+	private Integer userId;//用户编号
 	@Column(nullable = true)
-	private int roleId;//角色编号
-	public int getUserRoleId() {
+	private Integer roleId;//角色编号
+	public Integer getUserRoleId() {
 		return userRoleId;
 	}
-	public void setUserRoleId(int userRoleId) {
+	public void setUserRoleId(Integer userRoleId) {
 		this.userRoleId = userRoleId;
 	}
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public int getRoleId() {
+	public Integer getRoleId() {
 		return roleId;
 	}
-	public void setRoleId(int roleId) {
+	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
 	@Override

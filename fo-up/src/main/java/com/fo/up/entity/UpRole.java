@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class UpRole {
 	@Id
 	@GeneratedValue
-	private int roleId;//编号
+	private Integer roleId;//编号
 	@Column(nullable = true)
 	private String name;//角色名称
 	@Column(nullable = true)
@@ -17,13 +17,13 @@ public class UpRole {
 	@Column(nullable = true)
 	private String description;//角色描述
 	@Column(nullable = false)
-	private long ctime;//创建时间
+	private Long ctime;//创建时间
 	@Column(nullable = false)
-	private long orders;//排序
-	public int getRoleId() {
+	private Long orders;//排序
+	public Integer getRoleId() {
 		return roleId;
 	}
-	public void setRoleId(int roleId) {
+	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
 	public String getName() {
@@ -44,16 +44,16 @@ public class UpRole {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public long getCtime() {
+	public Long getCtime() {
 		return ctime;
 	}
-	public void setCtime(long ctime) {
+	public void setCtime(Long ctime) {
 		this.ctime = ctime;
 	}
-	public long getOrders() {
+	public Long getOrders() {
 		return orders;
 	}
-	public void setOrders(long orders) {
+	public void setOrders(Long orders) {
 		this.orders = orders;
 	}
 	@Override
