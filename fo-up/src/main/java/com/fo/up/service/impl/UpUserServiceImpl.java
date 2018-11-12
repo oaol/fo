@@ -18,12 +18,13 @@ public class UpUserServiceImpl implements UpUserService {
     @Autowired
     private UpUserRepository upUserRepository;
 
-    @Override
+    
     /**
 	 * 根据id查找user
 	 * @param id
 	 * @return
 	 */
+    @Override
     public UpUser getUserById(Long id) {
     	if(id == null){
     		throw new UpException("id is not null");
@@ -31,11 +32,12 @@ public class UpUserServiceImpl implements UpUserService {
         return upUserRepository.findById(id).get();
     }
 
-	@Override
+	
 	/**
      * 新增用户
      * @return
      */
+    @Override
 	public UpUser addUser(UpUser user) {
 		if (StringUtils.isBlank(user.getUsername())){
 			throw new UpException("用户名不能为空");
@@ -50,11 +52,11 @@ public class UpUserServiceImpl implements UpUserService {
 		return upUserRepository.save(user);
 	}
 
-	@Override
-	/**
+	/*@Override
+	*//**
      * 更新用户
      * @return
-     */
+     *//*
 	public UpUser addUser1(UpUser user) {
 		if(user.getUserId() == null){
 			throw new UpException("传入user_id不能为空");
@@ -67,7 +69,7 @@ public class UpUserServiceImpl implements UpUserService {
 			throw new UpException("密码至少六位");
 		}
 		return upUserRepository.save(user);
-	}
+	}*/
 
 	/**
      * 更新用户

@@ -16,7 +16,7 @@ public class UpRoleServiceImpl implements UpRoleService {
     private UpRoleRepository upRoleRepository;
 
     @Override
-    public List<UpRole> findRoleByUserId(Long userId) {
+    public List<UpRole> findRoleByUserId(Integer userId) {
         return this.upRoleRepository.findRoleByUserId(userId);
     }
 

@@ -35,10 +35,10 @@ public class UpUserController {
     }
 
     
-    @PutMapping
+  /*  @PutMapping
     public UpUser updateUserById(UpUser user){
         return upUserService.addUser1(user);
-    }
+    }*/
     
     @PutMapping(value="/update")
     public void updateUser(UpUser user){

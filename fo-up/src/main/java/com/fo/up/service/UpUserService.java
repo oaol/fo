@@ -19,12 +19,12 @@ public interface UpUserService {
      * @return
      */
     public UpUser addUser(UpUser upser);
-    
-    /**
+   /* 
+    *//**
      * 更新用户
      * @return
-     */
-    public UpUser addUser1(UpUser upser);
+     *//*
+    public UpUser addUser1(UpUser upser);*/
     
     /**
      * 更新用户

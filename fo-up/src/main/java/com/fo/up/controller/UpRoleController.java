@@ -3,6 +3,7 @@ package com.fo.up.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,14 +13,14 @@ import com.fo.up.entity.UpRole;
 import com.fo.up.service.UpRoleService;
 
 @RestController
-@RequestMapping("role/")
+@RequestMapping(value = "/role")
 public class UpRoleController {
 
     @Autowired
     private UpRoleService upRoleService;
 
-    @GetMapping(value = "user/{userId}")
-    public List<UpRole> findRoleByUserId(@PathVariable( value = "userId") Long userId) {
+    @GetMapping(value = "/user")
+    public List<UpRole> findRoleByUserId(@Param( value = "userId") Integer userId) {
         return this.upRoleService.findRoleByUserId(userId);
     }
 
