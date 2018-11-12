@@ -11,9 +11,9 @@ import com.fo.up.entity.UpRole;
 public interface UpRoleRepository extends JpaRepository<UpRole, Long>{
 
     @Query( value = 
-            "select distinct ur.roleId, ur.name, ur.title, ur.description, ur.ctime, ur.orders "
+            "select ur.roleId, ur.name, ur.title, ur.description, ur.ctime, ur.orders "
             + " from UpRole ur "  
-            + " left join UpUserRole uur on ur.roleId = uur.userId " 
+            + " left join UpUserRole uur on ur.roleId = uur.roleId " 
             +  "where uur.userId = :userId")
           
     public List<UpRole> findRoleByUserId(@Param( value = "userId") Integer userId);
