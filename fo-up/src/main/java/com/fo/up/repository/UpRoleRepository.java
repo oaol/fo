@@ -16,5 +16,5 @@ public interface UpRoleRepository extends JpaRepository<UpRole, Long>{
             + " left join UpUserRole uur on ur.roleId = uur.roleId " 
             +  "where uur.userId = :userId")
           
-    public List<UpRole> findRoleByUserId(@Param( value = "userId") Integer userId);
+    public List<UpRole> findRoleByUserId(@Param( value = "userId") Long userId);
 }

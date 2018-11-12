@@ -8,8 +8,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.fo.common.core.exception.UpException;
 import com.fo.up.entity.UpPermission;
+import com.fo.up.entity.UpUser;
 import com.fo.up.repository.UpPermissionRepository;
+import com.fo.up.repository.UpUserRepository;
 import com.fo.up.service.UpPermissionService;
 
 @Service
@@ -18,9 +21,15 @@ public class UpPermissionServiceImpl implements UpPermissionService{
     @Autowired
     private UpPermissionRepository upPermissionRepository;
 
+    @Autowired
+    private UpUserRepository upUserRepository;
+
     @Override
     public List<UpPermission> findPermissionByUserId(Long userId) {
-        // TODO check user status
+        UpUser upUser = upUserRepository.findById(userId).get();
+        if (null == upUser || upUser.getLocked() == 1) {
+            throw new UpException(String.format("不存在的用户 userId: %s", userId)) ;
+        }
         return this.upPermissionRepository.findPermissionByUserId(userId);
     }
 

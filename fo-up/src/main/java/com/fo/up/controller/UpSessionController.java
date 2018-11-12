@@ -3,7 +3,7 @@ package com.fo.up.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UpLoginController {
+public class UpSessionController {
     
     
 

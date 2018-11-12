@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +19,7 @@ public class UpRoleController {
     private UpRoleService upRoleService;
 
     @GetMapping(value = "/user")
-    public List<UpRole> findRoleByUserId(@Param( value = "userId") Integer userId) {
+    public List<UpRole> findRoleByUserId(@Param( value = "userId") Long userId) {
         return this.upRoleService.findRoleByUserId(userId);
     }
 
