@@ -1,5 +1,7 @@
 package com.fo.up.service.impl;
 
+import java.util.UUID;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -7,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.fo.common.core.util.MD5Util;
 import com.fo.up.core.exception.UpException;
 import com.fo.up.entity.UpUser;
 import com.fo.up.repository.UpUserRepository;
@@ -49,6 +52,12 @@ public class UpUserServiceImpl implements UpUserService {
 		}else if (user.getPassword().length() < 6){
 			throw new UpException("密码至少六位");
 		}
+		
+		long time = System.currentTimeMillis();
+        String salt = UUID.randomUUID().toString().replaceAll("-", "");
+        user.setSalt(salt);
+        user.setPassword(MD5Util.md5(user.getPassword() + user.getSalt()));
+        user.setCtime(time);
 		return upUserRepository.save(user);
 	}
 
