@@ -27,7 +27,15 @@ public class UpRoleServiceImpl implements UpRoleService {
         if (null == upUser || upUser.getLocked() == 1) {
             throw new UpException(String.format("不存在的用户 userId: %s", userId)) ;
         }
-        return this.upRoleRepository.findRoleByUserId(userId);
+        List<UpRole> findRoleByUserId = this.upRoleRepository.findRoleByUserId(userId);
+        return findRoleByUserId;
     }
 
+    @Override
+    public UpRole findRoleById(Long roleId) {
+        UpRole upRole = this.upRoleRepository.findById(roleId).get();
+        return upRole;
+    }
+
+    
 }

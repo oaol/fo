@@ -7,9 +7,9 @@ import javax.persistence.Id;
 public class UpOrganization {
 	@Id
 	@GeneratedValue
-	private Integer organizationId;//编号
+	private Long organizationId;//编号
 	@Column(nullable = false)
-	private Integer pid;//所属上级
+	private Long pid;//所属上级
 	
 	@Column(nullable = true)
 	private String name;//组织名称
@@ -17,19 +17,20 @@ public class UpOrganization {
 	private String description;//组织描述
 	@Column(nullable = true)
 	private Long cTime;//创建时间'
-	public Integer getOrganizationId() {
-		return organizationId;
-	}
-	public void setOrganizationId(Integer organizationId) {
-		this.organizationId = organizationId;
-	}
-	public Integer getPid() {
-		return pid;
-	}
-	public void setPid(Integer pid) {
-		this.pid = pid;
-	}
-	public String getName() {
+	
+	public Long getOrganizationId() {
+        return organizationId;
+    }
+    public void setOrganizationId(Long organizationId) {
+        this.organizationId = organizationId;
+    }
+    public Long getPid() {
+        return pid;
+    }
+    public void setPid(Long pid) {
+        this.pid = pid;
+    }
+    public String getName() {
 		return name;
 	}
 	public void setName(String name) {

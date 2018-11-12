@@ -8,35 +8,28 @@ import javax.persistence.Id;
 public class UpUerOrganization {
 	@Id
 	@GeneratedValue
-	private Integer userOrganizationId;//编号
+	private Long userOrganizationId;//编号
 	@Column(nullable = false)
-	private Integer userId;//用户编号
+	private Long userId;//用户编号
 	@Column(nullable = false)
-	private Integer organizationId;//组织编号
-	public Integer getUserOrganizationId() {
-		return userOrganizationId;
-	}
-	public void setUserOrganizationId(Integer userOrganizationId) {
-		this.userOrganizationId = userOrganizationId;
-	}
-	public Integer getUserId() {
-		return userId;
-	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-	public Integer getOrganizationId() {
-		return organizationId;
-	}
-	public void setOrganizationId(Integer organizationId) {
-		this.organizationId = organizationId;
-	}
-	@Override
-	public String toString() {
-		return "UpUerOrganization [userOrganizationId=" + userOrganizationId + ", userId=" + userId
-				+ ", organizationId=" + organizationId + "]";
-	}
-	
-	
+	private Long organizationId;//组织编号
+    public Long getUserOrganizationId() {
+        return userOrganizationId;
+    }
+    public void setUserOrganizationId(Long userOrganizationId) {
+        this.userOrganizationId = userOrganizationId;
+    }
+    public Long getUserId() {
+        return userId;
+    }
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+    public Long getOrganizationId() {
+        return organizationId;
+    }
+    public void setOrganizationId(Long organizationId) {
+        this.organizationId = organizationId;
+    }
 	
 }

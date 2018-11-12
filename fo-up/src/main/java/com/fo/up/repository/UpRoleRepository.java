@@ -11,10 +11,10 @@ import com.fo.up.entity.UpRole;
 public interface UpRoleRepository extends JpaRepository<UpRole, Long>{
 
     @Query( value = 
-            "select ur.roleId, ur.name, ur.title, ur.description, ur.ctime, ur.orders "
-            + " from UpRole ur "  
-            + " left join UpUserRole uur on ur.roleId = uur.roleId " 
-            +  "where uur.userId = :userId")
+            "select ur.role_id, ur.name, ur.title, ur.description, ur.ctime, ur.orders "
+            + " from up_role ur "
+            + " left join up_user_role uur on ur.role_id = uur.role_id " 
+            +  "where uur.user_id = :userId", nativeQuery = true)
           
     public List<UpRole> findRoleByUserId(@Param( value = "userId") Long userId);
 }

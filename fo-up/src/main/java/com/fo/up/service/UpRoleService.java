@@ -17,4 +17,6 @@ public interface UpRoleService {
      * @return
      */
     public List<UpRole> findRoleByUserId(Long userId);
+    
+    public UpRole findRoleById(Long roleId);
 }

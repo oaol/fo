@@ -16,7 +16,7 @@ import com.fo.up.entity.UpPermission;
 import com.fo.up.service.UpPermissionService;
 
 @RestController
-@RequestMapping("permission/")
+@RequestMapping("/permission/")
 public class UpPermissionController {
     
     @Autowired
