@@ -20,7 +20,12 @@ public class UpRoleServiceImpl implements UpRoleService {
 
     @Autowired
     private UpUserRepository upUserRepository;
-
+    
+    /**
+     * 根据userId查找所有的角色
+     * @param userId
+     * @return
+     */
     @Override
     public List<UpRole> findRoleByUserId(Long userId) {
         UpUser upUser = this.upUserRepository.findById(userId).get();

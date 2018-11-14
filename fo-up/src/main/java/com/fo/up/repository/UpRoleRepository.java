@@ -9,7 +9,11 @@ import org.springframework.data.repository.query.Param;
 import com.fo.up.entity.UpRole;
 
 public interface UpRoleRepository extends JpaRepository<UpRole, Long>{
-
+    /**
+     * 根据userId查找所有的角色
+     * @param userId
+     * @return
+     */
     @Query( value = 
             "select ur.role_id, ur.name, ur.title, ur.description, ur.ctime, ur.orders "
             + " from up_role ur "
