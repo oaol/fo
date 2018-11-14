@@ -2,6 +2,8 @@ package com.fo.up.service.impl;
 
 import java.util.UUID;
 
+import javax.transaction.Transactional;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -13,6 +15,7 @@ import com.fo.common.core.util.MD5Util;
 import com.fo.up.core.exception.UpException;
 import com.fo.up.entity.UpUser;
 import com.fo.up.repository.UpUserRepository;
+import com.fo.up.repository.UpUserRoleRepository;
 import com.fo.up.service.UpUserService;
 
 @Service
@@ -21,6 +24,8 @@ public class UpUserServiceImpl implements UpUserService {
     @Autowired
     private UpUserRepository upUserRepository;
 
+    @Autowired
+    private UpUserRoleRepository upUserRoleRepository;
     
     /**
 	 * 根据id查找user
@@ -93,11 +98,15 @@ public class UpUserServiceImpl implements UpUserService {
 	 * 根据id删除用户
 	 */
 	@Override
+	@Transactional
 	public void deleteById(Long id){
 		if(id == null){
 			throw new UpException("删除时id不能为空");
 		}
+		
 		upUserRepository.deleteById(id);
+		// delete role by user id
+		this.upUserRoleRepository.deleteByUserId(id);
 	}
 	
 	/**
