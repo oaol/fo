@@ -3,13 +3,14 @@ package com.fo.up.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class UpPermission {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long permissionId;// 编号
     @Column(nullable = false)
     private Integer systemId;// 所属系统
