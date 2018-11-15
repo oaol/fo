@@ -1,4 +1,7 @@
 description = 'fo-common'
+jar{
+    enabled = true
+}
 dependencies {
     compile('com.alibaba:fastjson:1.2.49')
     compile('org.apache.commons:commons-lang3:3.4')

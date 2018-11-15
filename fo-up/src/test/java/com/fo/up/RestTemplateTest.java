@@ -1,4 +1,4 @@
-package com.fo.up.demo;
+package com.fo.up;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
