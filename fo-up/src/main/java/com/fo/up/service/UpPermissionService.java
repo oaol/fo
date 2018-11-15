@@ -16,20 +16,26 @@ public interface UpPermissionService {
      * @return
      */
     public List<UpPermission> findPermissionByUserId(Long userId);
-
+   
+    /**
+     * 查看权限
+     * @param upPermissionId
+     * @return
+     */
+    public UpPermission findByUpPermission(Long upPermissionId);
     /**
      * 新增权限
      * 
      * @param upPermission
      */
-    public void createPermission(UpPermission upPermission);
+    public UpPermission addPermission(UpPermission upPermission);
 
     /**
      * 修改权限
      * 
      * @param upPermission
      */
-    public void alterPermission(UpPermission upPermission);
+    public void updatePermission(UpPermission upPermission);
 
     /**
      * 根据 id 删除 permission

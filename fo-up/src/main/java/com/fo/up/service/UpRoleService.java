@@ -17,7 +17,11 @@ public interface UpRoleService {
      * @return
      */
     public List<UpRole> findRoleByUserId(Long userId);
-    
+    /**
+     * 查看角色
+     * @param roleId
+     * @return
+     */
     public UpRole findRoleById(Long roleId);
     
     /**
