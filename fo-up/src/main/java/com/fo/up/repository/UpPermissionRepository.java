@@ -54,7 +54,7 @@ public interface UpPermissionRepository extends JpaRepository<UpPermission, Long
      * 更新权限
      */
     @Transactional
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Query(value= "UPDATE up_permission p SET "
     		+ " p.system_id = CASE WHEN :#{#upPermission.systemId} IS NULL THEN p.system_id ELSE :#{#upPermission.systemId} END ,"
     		+ " p.pid = CASE WHEN :#{#upPermission.pid} IS NULL THEN p.pid ELSE :#{#upPermission.pid} END,"

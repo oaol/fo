@@ -2,11 +2,12 @@ package com.fo.up.entity;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 public class UpOrganization {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long organizationId;//编号
 	@Column(nullable = false)
 	private Long pid;//所属上级
@@ -16,7 +17,7 @@ public class UpOrganization {
 	@Column(nullable = true)
 	private String description;//组织描述
 	@Column(nullable = true)
-	private Long cTime;//创建时间'
+	private Long ctime;//创建时间'
 	
 	public Long getOrganizationId() {
         return organizationId;
@@ -43,15 +44,15 @@ public class UpOrganization {
 		this.description = description;
 	}
 	public Long getcTime() {
-		return cTime;
+		return ctime;
 	}
-	public void setcTime(Long cTime) {
-		this.cTime = cTime;
+	public void setcTime(Long ctime) {
+		this.ctime = ctime;
 	}
 	@Override
 	public String toString() {
 		return "UpOrganization [organizationId=" + organizationId + ", pid=" + pid + ", name=" + name + ", description="
-				+ description + ", cTime=" + cTime + "]";
+				+ description + ", ctime=" + ctime + "]";
 	}
     
 	
