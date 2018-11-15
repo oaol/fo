@@ -1,0 +1,647 @@
+{
+	"info": {
+		"_postman_id": "98c91b7f-50b0-49c3-b88e-3c0cd47f85f7",
+		"name": "fof",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "upUser",
+			"item": [
+				{
+					"name": "upload file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/file/uploadFile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"file",
+								"uploadFile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload multi files",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/file/uploadFile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"file",
+								"uploadFile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据id查询",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/user?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "根据id查询"
+					},
+					"response": []
+				},
+				{
+					"name": "新增用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/user?username=admin1&password=88888888",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"user"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "admin1"
+								},
+								{
+									"key": "password",
+									"value": "88888888"
+								},
+								{
+									"key": "userId",
+									"value": "4",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除用户",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/user?id=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								},
+								{
+									"key": "name",
+									"value": "wangwu",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新用户",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/user?password=0000000000&sex=0&userId=20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"user"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": "0000000000"
+								},
+								{
+									"key": "sex",
+									"value": "0"
+								},
+								{
+									"key": "userId",
+									"value": "20"
+								},
+								{
+									"key": "username",
+									"value": "admin3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "分页查询",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/user/page?page=1&pagesize=6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"user",
+								"page"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "userId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pagesize",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "upRole",
+			"item": [
+				{
+					"name": "根据id查所有角色",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/role/user?userId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"role",
+								"user"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/role?roleId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"role"
+							],
+							"query": [
+								{
+									"key": "roleId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "增",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/role?name=super管理员&title=管理员管理员&ctime=12132133&orders=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"role"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "super管理员"
+								},
+								{
+									"key": "title",
+									"value": "管理员管理员"
+								},
+								{
+									"key": "ctime",
+									"value": "12132133"
+								},
+								{
+									"key": "orders",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "改",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/role?name=super管理员&title=管理员管理员管理员管理员&ctime=12132133&orders=123456&roleId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"role"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "super管理员"
+								},
+								{
+									"key": "title",
+									"value": "管理员管理员管理员管理员"
+								},
+								{
+									"key": "ctime",
+									"value": "12132133"
+								},
+								{
+									"key": "orders",
+									"value": "123456"
+								},
+								{
+									"key": "roleId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/role?roleId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"role"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "super管理员",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "管理员管理员管理员管理员",
+									"disabled": true
+								},
+								{
+									"key": "ctime",
+									"value": "12132133",
+									"disabled": true
+								},
+								{
+									"key": "orders",
+									"value": "123456",
+									"disabled": true
+								},
+								{
+									"key": "roleId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "upOriginization",
+			"item": []
+		},
+		{
+			"name": "upPermission",
+			"item": [
+				{
+					"name": "增",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/permission?systemId=1&pid=0&name=lalallalalala",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"permission"
+							],
+							"query": [
+								{
+									"key": "upPermissionId",
+									"value": "67",
+									"disabled": true
+								},
+								{
+									"key": "systemId",
+									"value": "1"
+								},
+								{
+									"key": "pid",
+									"value": "0"
+								},
+								{
+									"key": "name",
+									"value": "lalallalalala"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/permission?upPermissionId=67",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"permission"
+							],
+							"query": [
+								{
+									"key": "upPermissionId",
+									"value": "67"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/permission?upPermissionId=85",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"permission"
+							],
+							"query": [
+								{
+									"key": "systemId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "pid",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "杨成杰",
+									"disabled": true
+								},
+								{
+									"key": "upPermissionId",
+									"value": "85"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "改",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8089/up/permission?systemId=1&pid=0&name=杨成杰&permissionId=85",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"up",
+								"permission"
+							],
+							"query": [
+								{
+									"key": "systemId",
+									"value": "1"
+								},
+								{
+									"key": "pid",
+									"value": "0"
+								},
+								{
+									"key": "name",
+									"value": "杨成杰"
+								},
+								{
+									"key": "permissionId",
+									"value": "85"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
