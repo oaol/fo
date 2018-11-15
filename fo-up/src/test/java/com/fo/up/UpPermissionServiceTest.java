@@ -14,7 +14,7 @@ import com.fo.up.service.UpPermissionService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UpPermissionServiceTest extends BaseTest {
+public class UpPermissionServiceTest {
 
     @Autowired
     private UpPermissionService upPermissionService;

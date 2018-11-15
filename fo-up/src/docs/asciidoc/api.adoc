@@ -1,0 +1,4 @@
+operation::user[snippets='curl-request,httpie-request,http-request,http-response,response-fields,links']
+
+- curl request:
+include::{snippets}/user/curl-request.adoc[]

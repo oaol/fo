@@ -36,6 +36,7 @@ asciidoctor {
     inputs.dir snippetsDir 
     dependsOn test 
     //outputDir file('build/docs/rest/output')
+    attributes 'snippets': file('build/generated-snippets')
 }
 
 jar {

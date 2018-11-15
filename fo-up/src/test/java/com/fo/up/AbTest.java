@@ -1,46 +1,40 @@
 package com.fo.up;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
+import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.JUnitRestDocumentation;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
-@SpringBootTest
-@RunWith(SpringRunner.class)
-public class AbTest {
-    
-    @Rule
-    public final JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 
-    @Autowired
-    private WebApplicationContext context;
-    private MockMvc mockMvc;
-    @Before
-    public void setUp() {
-    this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
-    .apply(documentationConfiguration(this.restDocumentation)
-//            .snippets().withTemplateFormat(TemplateFormats.markdown())
-            )
-    .build();
-    }
+public class AbTest extends BaseDocTest{
+
     @Test
     public void indexExample() throws Exception {
-    this.mockMvc.perform(get("/up/user/page"))
-//    .andExpect(status().isOk())
-    .andDo(document("ab")
-            );
+        
+    MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+    params.add("page", "0");
+    params.add("size", "2");
+    this.mockMvc.perform(get("/user/page").params(params).contentType(MediaType.APPLICATION_JSON_UTF8))
+    .andExpect(status().isOk())
+    .andDo(
+            document("user",
+                    requestParameters(
+                            parameterWithName("page").description("用户姓名"),
+                            parameterWithName("size").description("用户性别，0=女，1=男"))
+                    ,
+                    responseFields(
+                            subsectionWithPath("code").description("接口版本"),
+                            subsectionWithPath("message").description("接口版本"),
+                            subsectionWithPath("data").description("接口版本")
+                    )
+             )
+       );
     }
 
 }
