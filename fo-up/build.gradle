@@ -1,5 +1,13 @@
+plugins {
+    // restdocs
+    id "org.asciidoctor.convert" version "1.5.6"
+}
+
 description = 'fo-up-persistence'
 
+bootJar {
+      mainClassName = 'com.fo.up.UpApplication'
+}
 apply plugin: 'war'
 
 dependencies {
@@ -9,4 +17,30 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-data-redis')
     compile('com.alibaba:fastjson:1.2.49')
+
+    // restdocs
+    asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor:2.0.1.RELEASE' 
+    testCompile 'org.springframework.restdocs:spring-restdocs-mockmvc:2.0.0.RELEASE' 
+}
+
+ext { 
+    // restdocs
+    snippetsDir = file('build/generated-snippets')
+}
+// restdocs
+test { 
+    outputs.dir snippetsDir
+}
+//restdocs
+asciidoctor {
+    inputs.dir snippetsDir 
+    dependsOn test 
+    //outputDir file('build/docs/rest/output')
+}
+
+jar {
+    dependsOn asciidoctor 
+    from ("${asciidoctor.outputDir}/html5") { 
+        into 'static/docs'
+    }
 }

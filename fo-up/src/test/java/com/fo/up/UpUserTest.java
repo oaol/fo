@@ -1,4 +1,4 @@
-package com.fo.up.demo;
+package com.fo.up;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
