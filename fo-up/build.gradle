@@ -19,7 +19,7 @@ dependencies {
     compile('com.alibaba:fastjson:1.2.49')
 
     // restdocs
-    asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor:2.0.1.RELEASE' 
+    asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor:2.0.0.RELEASE' 
     testCompile 'org.springframework.restdocs:spring-restdocs-mockmvc:2.0.0.RELEASE' 
 }
 
