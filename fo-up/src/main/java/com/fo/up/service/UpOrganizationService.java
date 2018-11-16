@@ -1,8 +1,12 @@
 package com.fo.up.service;
 
+import java.util.List;
+
 import com.fo.up.entity.UpOrganization;
 
 public interface UpOrganizationService {
+	
+	
     /**
      * 新增组织
      */
@@ -23,4 +27,9 @@ public interface UpOrganizationService {
      */
     public UpOrganization findByOrganizationId(Long organizationId);
     
+    /**
+	 * 根据userId查组织
+	 */
+	public List<UpOrganization> findOrganizationByUserId(Long userId);
+	
 }

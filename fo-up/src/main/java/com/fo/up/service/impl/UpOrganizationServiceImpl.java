@@ -1,5 +1,7 @@
 package com.fo.up.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,7 @@ public class UpOrganizationServiceImpl implements UpOrganizationService{
 
     @Autowired
     private UpOrganizationRepository upOrganizationRepository;
+    
 
     /**
      * 新增组织
@@ -43,6 +46,14 @@ public class UpOrganizationServiceImpl implements UpOrganizationService{
     @Override
     public UpOrganization findByOrganizationId(Long organizationId) {
         return upOrganizationRepository.findById(organizationId).get();
-    } 
+    }
+
+    /**
+     * 根据userId查组织
+     */
+	@Override
+	public List<UpOrganization> findOrganizationByUserId(Long userId) {
+		return upOrganizationRepository.findOrganizationByUserId(userId);
+	} 
     
 }
