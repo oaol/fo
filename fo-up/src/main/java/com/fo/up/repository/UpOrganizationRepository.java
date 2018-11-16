@@ -1,6 +1,8 @@
 package com.fo.up.repository;
 
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -10,7 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fo.up.entity.UpOrganization;
 
 public interface UpOrganizationRepository extends JpaRepository<UpOrganization, Long>{
-    
+    /**
+     * 更新组织
+     * @param upOrganization
+     */
 	@Transactional
     @Modifying(clearAutomatically = true)
     @Query("update UpOrganization o set  "
@@ -21,5 +26,13 @@ public interface UpOrganizationRepository extends JpaRepository<UpOrganization, 
             + " where o.organizationId = :#{#upOrganization.organizationId}")
     public void updateByUpOrganization(@Param("upOrganization") UpOrganization upOrganization);
     
-   
+	/**
+	 * 根据userId查组织
+	 */
+	@Transactional
+	@Query(value = 
+	        "SELECT o.organization_id,o.pid,o.name,o.description,o.ctime FROM up_organization o "
+			+ "  JOIN up_user_organization uo ON o.organization_id = uo.organization_id "
+			+ " WHERE uo.user_id=:userId",nativeQuery = true)
+	public List<UpOrganization> findOrganizationByUserId(@Param("userId") Long userId);
 }

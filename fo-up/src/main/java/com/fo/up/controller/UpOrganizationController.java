@@ -1,5 +1,7 @@
 package com.fo.up.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,6 +38,11 @@ public class UpOrganizationController {
     @DeleteMapping
     public void deleteByOrganizationId(Long organizationId){
     	upOrganizationService.deleteByOrganizationId(organizationId);
+    }
+    
+    @GetMapping("/user")
+    public List<UpOrganization> findOrganizationByUserId(Long userId){
+    	return upOrganizationService.findOrganizationByUserId(userId);
     }
   
 
