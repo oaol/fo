@@ -23,7 +23,7 @@ public class AbTest extends BaseDocTest{
     this.mockMvc.perform(get("/user/page").params(params).contentType(MediaType.APPLICATION_JSON_UTF8))
     .andExpect(status().isOk())
     .andDo(
-            document("user",
+            document("ab",
                     requestParameters(
                             parameterWithName("page").description("用户姓名"),
                             parameterWithName("size").description("用户性别，0=女，1=男"))
