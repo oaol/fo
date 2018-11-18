@@ -1,6 +1,6 @@
 plugins {
     // restdocs
-    id "org.asciidoctor.convert" version "1.5.6"
+    id "org.asciidoctor.convert" version "1.5.3"
 }
 
 description = 'fo-up-persistence'
