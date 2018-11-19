@@ -15,7 +15,13 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import com.alibaba.fastjson.JSONObject;
+import com.fo.up.properties.TestProperties;
+
 public class AbTest extends BaseDocTest{
+
+    @Autowired
+    private TestProperties testProperties;
 
     @Test
     public void indexExample() throws Exception {
@@ -37,6 +43,10 @@ public class AbTest extends BaseDocTest{
                     )
              )
        );
+    }
+    @Test
+    public void propertiesTest() throws Exception {
+        System.out.println(JSONObject.toJSONString(testProperties));
     }
     
     @Autowired

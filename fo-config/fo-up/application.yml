@@ -32,3 +32,7 @@ server:
 up:
   file:
     upload-dir: ./uploads
+  test: koko
+  base:
+    pro1: ihfvf
+    pro2: 8888888
