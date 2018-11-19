@@ -2,6 +2,8 @@ package com.fo.up;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 
+import java.io.File;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,6 +21,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.fo.common.core.util.FileUtils;
+
 /**
  * 父类，用于准备好相关环境
  * @author bryce
@@ -27,6 +31,14 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BaseDocTest {
+    
+    static {
+        // "xxx/fo/fo-up"
+        String basePath = System.getProperty("user.dir");
+        File file = new File(basePath);
+        String configPath = FileUtils.getNParent(file, 1).getPath();
+        System.setProperty("spring.config.location", configPath + "/fo-config/fo-up/");
+    }
 
     //部分字段可以如下统一定义
     //请求时的分页参数

@@ -1,22 +1,24 @@
 package com.fo.up;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
+import static org.springframework.restdocs.payload.PayloadDocumentation.subsectionWithPath;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import org.springframework.web.client.RestTemplate;
 
 public class AbTest extends BaseDocTest{
 
     @Test
     public void indexExample() throws Exception {
-        
     MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
     params.add("page", "0");
     params.add("size", "2");
@@ -35,6 +37,15 @@ public class AbTest extends BaseDocTest{
                     )
              )
        );
+    }
+    
+    @Autowired
+    private RestTemplate restTemplate;
+    
+    @Test
+    public void test() {
+        String ss = this.restTemplate.getForObject("https://spring.io", String.class);
+        System.out.println(ss);
     }
 
 }
