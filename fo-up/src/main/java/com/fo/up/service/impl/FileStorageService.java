@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fo.up.config.FileStorageProperties;
 import com.fo.up.core.exception.UpException;
-import com.fo.up.properties.FileStorageProperties;
 
 @Service
 public class FileStorageService {

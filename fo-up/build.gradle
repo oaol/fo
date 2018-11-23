@@ -16,11 +16,18 @@ dependencies {
 	runtime('mysql:mysql-connector-java')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-data-redis')
+	compile('org.springframework.boot:spring-boot-starter-aop')
+	
     compile('com.alibaba:fastjson:1.2.49')
 
     // restdocs
     asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor:2.0.0.RELEASE' 
     testCompile 'org.springframework.restdocs:spring-restdocs-mockmvc:2.0.0.RELEASE' 
+
+    // spring shiro
+    compile group: 'org.apache.shiro', name: 'shiro-spring', version: '1.4.0'
+    compile group: 'org.apache.shiro', name: 'shiro-ehcache', version: '1.4.0'
+
 }
 
 ext { 

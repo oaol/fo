@@ -1,6 +1,7 @@
 package com.fo.up.controller;
 
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,6 +26,7 @@ public class UpUserController {
     private UpUserService upUserService;
     
     @GetMapping
+    @RequiresPermissions("haha")
     public UpUser getUserById(Long id) {
     	return this.upUserService.getUserById(id);
     }
@@ -52,6 +54,7 @@ public class UpUserController {
     
     
     @GetMapping( value = "/page")
+    @RequiresPermissions(value = {"cms:article:read"})
     public UpResult<Page<UpUser>> findUserByPage(@RequestParam(value = "username", required = false) String username, 
             @RequestParam( value = "userId", required = false) Long userId,
             @RequestParam( value = "page", required = false, defaultValue = "0") Integer page, 

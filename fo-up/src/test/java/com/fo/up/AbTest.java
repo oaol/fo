@@ -16,7 +16,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.alibaba.fastjson.JSONObject;
-import com.fo.up.properties.TestProperties;
+import com.fo.up.config.TestProperties;
 
 public class AbTest extends BaseDocTest{
 
