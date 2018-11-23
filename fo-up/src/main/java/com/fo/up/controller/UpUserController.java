@@ -54,7 +54,7 @@ public class UpUserController {
     
     
     @GetMapping( value = "/page")
-    @RequiresPermissions(value = {"cms:article:read"})
+    @RequiresPermissions(value = {"cms:article:create"})
     public UpResult<Page<UpUser>> findUserByPage(@RequestParam(value = "username", required = false) String username, 
             @RequestParam( value = "userId", required = false) Long userId,
             @RequestParam( value = "page", required = false, defaultValue = "0") Integer page, 

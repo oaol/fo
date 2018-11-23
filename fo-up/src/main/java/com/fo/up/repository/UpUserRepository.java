@@ -25,7 +25,6 @@ public interface UpUserRepository extends JpaRepository<UpUser, Long> {
     @Query("select u.username from UpUser u where u.username = :username")
     public String findUsername(@Param(value = "username") String username);
 
-    public UpUser findUpUserByUsernameAndPassword(@Param(value = "username") String username,
-            @Param(value = "password") String password);
+    public UpUser findUpUserByUsername(@Param(value = "username") String username);
 
 }

@@ -116,7 +116,7 @@ public class UpUserServiceImpl implements UpUserService {
 
     @Override
     public UpUser findUserByUsernameAndPassword(UpUser upUser) {
-        UpUser user = this.upUserRepository.findUpUserByUsernameAndPassword(upUser.getUsername(), upUser.getPassword());
+        UpUser user = this.upUserRepository.findUpUserByUsername(upUser.getUsername());
         return user;
     }
 
