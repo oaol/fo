@@ -26,8 +26,8 @@ public class UpUserController {
     private UpUserService upUserService;
     
     @GetMapping(value = "/{id}")
-    @RequiresPermissions("haha")
-    public UpUser getUserById(@PathVariable("id") Long id) {
+    @RequiresPermissions("up:user:find")
+    public UpUser getUserById(Long id) {
     	return this.upUserService.getUserById(id);
     }
     
