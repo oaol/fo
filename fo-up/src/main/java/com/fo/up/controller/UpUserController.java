@@ -27,8 +27,11 @@ public class UpUserController {
     
     @GetMapping(value = "/{id}")
     @RequiresPermissions("up:user:find")
-    public UpUser getUserById(Long id) {
-    	return this.upUserService.getUserById(id);
+    public UpResult<UpUser> getUserById(@PathVariable("id") Long id) {
+        UpResult<UpUser> upResult = new UpResult<>();
+        UpUser userById = this.upUserService.getUserById(id);
+        upResult.setResults(userById);
+    	return upResult;
     }
     
     @PostMapping
