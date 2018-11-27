@@ -18,12 +18,12 @@ public class BaseResult<T> {
     /**
      * 数据结果集
      */
-    public T data;
+    public T results;
 
-    public BaseResult(int code, String message, T data) {
+    public BaseResult(int code, String message, T results) {
         this.code = code;
         this.message = message;
-        this.data = data;
+        this.results = results;
     }
 
     public int getCode() {
@@ -42,12 +42,12 @@ public class BaseResult<T> {
         this.message = message;
     }
 
-    public T getData() {
-        return data;
+    public T getResults() {
+        return results;
     }
 
-    public void setData(T data) {
-        this.data = data;
+    public void setResults(T results) {
+        this.results = results;
     }
 
 }

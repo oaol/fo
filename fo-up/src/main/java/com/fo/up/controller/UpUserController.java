@@ -7,12 +7,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fo.up.core.constant.UpResult;
@@ -25,14 +25,14 @@ public class UpUserController {
     @Autowired
     private UpUserService upUserService;
     
-    @GetMapping
+    @GetMapping(value = "/{id}")
     @RequiresPermissions("haha")
-    public UpUser getUserById(Long id) {
+    public UpUser getUserById(@PathVariable("id") Long id) {
     	return this.upUserService.getUserById(id);
     }
     
     @PostMapping
-    public UpUser addUser(UpUser user){
+    public UpUser addUser(@RequestBody UpUser user){
     	return upUserService.addUser(user);
     }
 
@@ -42,16 +42,15 @@ public class UpUserController {
         return upUserService.addUser1(user);
     }*/
     
-    @PutMapping(value="/update")
-    public void updateUser(UpUser user){
+    @PutMapping
+    public void updateUser(@RequestBody UpUser user){
     	upUserService.updateUser(user);
     }
     
-    @DeleteMapping
-    public void deleteById(Long id){
+    @DeleteMapping(value = "/{id}")
+    public void deleteById(@PathVariable("id") Long id){
     	upUserService.deleteById(id);
     }
-    
     
     @GetMapping( value = "/page")
     @RequiresPermissions(value = {"cms:article:create"})
@@ -63,8 +62,8 @@ public class UpUserController {
     	upUser.setUserId(userId);
     	upUser.setUsername(username);
         UpResult<Page<UpUser>> upResult = new UpResult<Page<UpUser>>();
-        Page<UpUser> findUserByPage = upUserService.findUserByPage(upUser, PageRequest.of(page, pageSize));
-        upResult.setData(findUserByPage);
+        Page<UpUser> findUserByPage = upUserService.findUserByPage(upUser, PageRequest.of(page - 1, pageSize));
+        upResult.setResults(findUserByPage);
         return upResult;
     }
 }
