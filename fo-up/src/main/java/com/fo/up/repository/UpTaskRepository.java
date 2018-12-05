@@ -14,8 +14,7 @@ public interface UpTaskRepository extends JpaRepository<UpTask, String> {
     @Modifying(clearAutomatically = true)
     @Transactional
     @Query("update UpTask t set t.flag = CASE WHEN :#{#task.flag} IS NULL THEN t.flag ELSE :#{#task.flag} END ,"
-            + "t.startTime = CASE WHEN :#{#task.startTime} IS NULL THEN t.startTime ELSE :#{#task.startTime} END ,"
-            + "t.endTime = CASE WHEN :#{#task.endTime} IS NULL THEN t.endTime ELSE :#{#task.endTime} END ,"
+            + "t.sqlDate = CASE WHEN :#{#task.sqlDate} IS NULL THEN t.sqlDate ELSE :#{#task.sqlDate} END ,"
             + "t.period = CASE WHEN :#{#task.period} IS NULL THEN t.period ELSE :#{#task.period} END" 
             + " where t.taskId = :#{#task.taskId}")
     public void updateTask(@Param("task") UpTask task);

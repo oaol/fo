@@ -1,6 +1,8 @@
 package com.fo.up.service;
 
 
+import org.springframework.data.domain.Page;
+
 import com.fo.up.entity.UpTask;
 
 public interface UpTaskService {
