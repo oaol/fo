@@ -7,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fo.up.entity.UpTask;
-import com.fo.up.entity.UpUser;
 
 public interface UpTaskRepository extends JpaRepository<UpTask, String> {
     // update或者delete时需要加modifying
