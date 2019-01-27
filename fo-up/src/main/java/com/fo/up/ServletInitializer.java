@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-//        System.setProperty("spring.config.name", "fo-up" + File.separator + "application");
+        System.setProperty("spring.config.name", "fo-up" + File.separator + "application");
         return application.sources(UpApplication.class);
     }
 
