@@ -31,6 +31,7 @@ dependencies {
     compile group: 'org.apache.shiro', name: 'shiro-ehcache', version: '1.4.0'
     compile group: 'org.apache.poi', name: 'poi', version: '3.15'
     compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.15'
+    compile group: 'com.alibaba', name: 'easyexcel', version: '1.0.0-RELEASE'
     
 
 }
