@@ -1,6 +1,5 @@
 package com.fo.common.core.configuration;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
@@ -11,6 +10,7 @@ import org.springframework.http.MediaType;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.fo.common.core.util.CollectionUtils;
 
 /**
  * use fastjson parse response
@@ -40,7 +40,7 @@ public class FastjsonConvertersConfiguration {
 //        WriteNullBooleanAsFalse：Boolean字段如果为null,输出为false,而非null
 //        WriteMapNullValue：是否输出值为null的字段,默认为false。
         //处理中文乱码问题
-        List<MediaType> fastMediaTypes = new ArrayList<>();
+        List<MediaType> fastMediaTypes = CollectionUtils.newArrayList();
         fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
         fastJsonHttpMessageConverter.setSupportedMediaTypes(fastMediaTypes);
 

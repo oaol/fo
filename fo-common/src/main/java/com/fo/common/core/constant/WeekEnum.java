@@ -1,4 +1,4 @@
-package com.fo.common.core.enums;
+package com.fo.common.core.constant;
 
 /**
  * 

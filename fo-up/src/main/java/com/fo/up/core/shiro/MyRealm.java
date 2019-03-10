@@ -19,6 +19,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fo.common.core.util.CollectionUtils;
 import com.fo.common.core.util.MD5Util;
 import com.fo.up.entity.UpPermission;
 import com.fo.up.entity.UpRole;
@@ -81,7 +82,7 @@ public class MyRealm extends AuthorizingRealm {
         if (principal instanceof UpUser) {
             UpUser currentUser = (UpUser) principal;
             List<UpRole> upRoles = this.upRoleService.findRoleByUserId(currentUser.getUserId());
-            List<String> roles = new ArrayList<>();
+            List<String> roles = CollectionUtils.newArrayList();
             upRoles.forEach((role) -> {
                 roles.add(role.getName());
             });

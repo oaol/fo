@@ -8,7 +8,7 @@ public class BaseResult<T> {
     /**
      * 状态码：1成功，其他为失败
      */
-    public int code;
+    public String code;
 
     /**
      * 成功为success，其他为失败原因
@@ -20,17 +20,17 @@ public class BaseResult<T> {
      */
     public T data;
 
-    public BaseResult(int code, String message, T data) {
+    public BaseResult(String code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
     }
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

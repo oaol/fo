@@ -18,8 +18,7 @@ public class UpUserDocTest extends BaseDocTest{
     @Test
     public void getUserById() throws Exception {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.add("id", "1");
-        this.mockMvc.perform(get("/user").params(params).contentType(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/user/1").params(params).contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
         .andDo(
                 document("user",

@@ -8,7 +8,6 @@ package com.fo.common.core.exception;
 public class UpException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
-    
     private int code;
     private String errorMessage;
     
@@ -39,12 +38,5 @@ public class UpException extends RuntimeException {
         this.code = code;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
 
 }

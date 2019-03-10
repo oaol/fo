@@ -4,16 +4,16 @@ import com.fo.common.core.base.BaseResult;
 
 public class UpResult<T> extends BaseResult<T> {
 
-    public UpResult(UpResultConstant upResultConstant, T data) {
+    public UpResult(UpResultEnum upResultConstant, T data) {
         super(upResultConstant.getCode(), upResultConstant.getMessage(), data);
     }
 
     public UpResult(T data) {
-        super(UpResultConstant.SUCCESS.code, UpResultConstant.SUCCESS.message, data);
+        super(UpResultEnum.SUCCESS.code, UpResultEnum.SUCCESS.message, data);
     }
 
     public UpResult() {
-        super(UpResultConstant.SUCCESS.code, UpResultConstant.SUCCESS.message, null);
+        super(UpResultEnum.SUCCESS.code, UpResultEnum.SUCCESS.message, null);
     }
 
 }

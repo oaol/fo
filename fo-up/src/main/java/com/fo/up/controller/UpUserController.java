@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fo.common.core.exception.UpException;
 import com.fo.up.core.constant.UpResult;
 import com.fo.up.entity.UpUser;
 import com.fo.up.service.UpUserService;
@@ -31,7 +32,8 @@ public class UpUserController {
         UpResult<UpUser> upResult = new UpResult<>();
         UpUser userById = this.upUserService.getUserById(id);
         upResult.setResults(userById);
-    	return upResult;
+        throw new UpException("ss");
+//    	return upResult;
     }
     
     @PostMapping
