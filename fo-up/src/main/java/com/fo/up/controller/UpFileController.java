@@ -72,4 +72,7 @@ public class UpFileController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);
     }
+    
+    public static void main(String[] args) {
+    }
 }

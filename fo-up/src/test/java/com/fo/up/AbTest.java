@@ -58,5 +58,10 @@ public class AbTest extends BaseDocTest{
         System.out.println(ss);
     }
 
+    public static void main(String[] args) {
+        String ss = "บิ๊";
+        System.out.println(ss.substring(0,1));
+        System.out.println(ss.length());
+    }
 }
 

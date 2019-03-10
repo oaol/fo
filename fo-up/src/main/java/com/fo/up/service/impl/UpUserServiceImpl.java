@@ -58,7 +58,6 @@ public class UpUserServiceImpl implements UpUserService {
         } else if (user.getPassword().length() < 6) {
             throw new UpException("密码至少六位");
         }
-
         long time = System.currentTimeMillis();
         String salt = UUID.randomUUID().toString().replaceAll("-", "");
         user.setSalt(salt);

@@ -30,6 +30,9 @@ dependencies {
     compile group: 'org.apache.shiro', name: 'shiro-spring', version: '1.4.0'
     compile group: 'org.apache.shiro', name: 'shiro-ehcache', version: '1.4.0'
 
+    // https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox
+    compile group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.13'
+
 }
 
 ext { 
