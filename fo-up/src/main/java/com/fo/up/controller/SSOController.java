@@ -1,5 +1,6 @@
 package com.fo.up.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -60,4 +61,5 @@ public class SSOController {
         }
         return;
     }
+    
 }

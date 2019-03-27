@@ -1,11 +1,13 @@
 package com.fo.common.core.exception;
 
+import java.io.Serializable;
+
 /**
  * common exception
  * @author bryce
  *
  */
-public class UpException extends RuntimeException {
+public class UpException extends RuntimeException implements Serializable{
 
     private static final long serialVersionUID = 1L;
     private int code;
@@ -38,5 +40,11 @@ public class UpException extends RuntimeException {
         this.code = code;
     }
 
+    public String getErrorMessage() {
+        return errorMessage;
+    }
 
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
 }
