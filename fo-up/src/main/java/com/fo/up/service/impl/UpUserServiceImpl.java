@@ -35,9 +35,6 @@ public class UpUserServiceImpl implements UpUserService {
      */
     @Override
     public UpUser getUserById(Long id) {
-        if (id == null) {
-            throw new UpException("id is not null");
-        }
         return upUserRepository.findById(id).get();
     }
 

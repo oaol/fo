@@ -1,9 +1,12 @@
 package com.fo.up.controller;
 
-import org.apache.commons.lang3.StringUtils;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,7 +37,7 @@ public class SSOController {
     }
 
     @GetMapping("/login")
-    public String login(String username, String password) {
+    public String login(@Validated @NotEmpty String username,@Valid  @NotEmpty String password) {
         Subject currentUser = SecurityUtils.getSubject();
         if ( !currentUser.isAuthenticated() ) {
             //collect user principals and credentials in a gui specific manner

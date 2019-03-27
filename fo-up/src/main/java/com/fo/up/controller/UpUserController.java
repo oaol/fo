@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fo.common.core.exception.UpException;
 import com.fo.up.core.constant.UpResult;
 import com.fo.up.entity.UpUser;
 import com.fo.up.service.UpUserService;
@@ -23,40 +22,34 @@ import com.fo.up.service.UpUserService;
 @RestController
 @RequestMapping(value="/user")
 public class UpUserController {
+
     @Autowired
     private UpUserService upUserService;
-    
+
     @GetMapping(value = "/{id}")
     @RequiresPermissions("up:user:find")
     public UpResult<UpUser> getUserById(@PathVariable("id") Long id) {
         UpResult<UpUser> upResult = new UpResult<>();
         UpUser userById = this.upUserService.getUserById(id);
         upResult.setResults(userById);
-        throw new UpException("ss");
-//    	return upResult;
+    	return upResult;
     }
-    
+
     @PostMapping
     public UpUser addUser(@RequestBody UpUser user){
     	return upUserService.addUser(user);
     }
 
-    
-  /*  @PutMapping
-    public UpUser updateUserById(UpUser user){
-        return upUserService.addUser1(user);
-    }*/
-    
     @PutMapping
     public void updateUser(@RequestBody UpUser user){
     	upUserService.updateUser(user);
     }
-    
+
     @DeleteMapping(value = "/{id}")
     public void deleteById(@PathVariable("id") Long id){
     	upUserService.deleteById(id);
     }
-    
+
     @GetMapping( value = "/page")
     @RequiresPermissions(value = {"cms:article:create"})
     public UpResult<Page<UpUser>> findUserByPage(@RequestParam(value = "username", required = false) String username, 
