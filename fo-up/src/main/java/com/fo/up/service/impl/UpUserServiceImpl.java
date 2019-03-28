@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.fo.common.core.util.ExceptionExpectUtils;
 import com.fo.common.core.util.MD5Util;
 import com.fo.up.core.exception.UpException;
 import com.fo.up.entity.UpUser;
@@ -45,16 +46,12 @@ public class UpUserServiceImpl implements UpUserService {
      */
     @Override
     public UpUser addUser(UpUser user) {
-        if (StringUtils.isBlank(user.getUsername())) {
-            throw new UpException("用户名不能为空");
-        } else if (upUserRepository.findUsername(user.getUsername()) != null) {
-            throw new UpException("用户名不能重复");
-        }
-        if (StringUtils.isBlank(user.getPassword())) {
-            throw new UpException("密码不能为空");
-        } else if (user.getPassword().length() < 6) {
-            throw new UpException("密码至少六位");
-        }
+        ExceptionExpectUtils.expectTrue(StringUtils.isBlank(user.getUsername()), new UpException("用户名不能为空"));
+        ExceptionExpectUtils.expectTrue(upUserRepository.findUsername(user.getUsername()) != null,
+                new UpException("用户名不能重复"));
+        ExceptionExpectUtils.expectTrue(StringUtils.isBlank(user.getPassword()), new UpException("密码不能为空"));
+        ExceptionExpectUtils.expectTrue(user.getPassword().length() < 6, new UpException("密码至少六位"));
+
         long time = System.currentTimeMillis();
         String salt = UUID.randomUUID().toString().replaceAll("-", "");
         user.setSalt(salt);
