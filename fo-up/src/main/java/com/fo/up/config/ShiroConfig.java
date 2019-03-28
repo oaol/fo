@@ -16,19 +16,19 @@ import org.springframework.context.annotation.DependsOn;
 import com.fo.up.core.shiro.MyRealm;
 
 /**
- * 
  *shiro config
  *
  * @author bryce
- *
  * @date Nov 22, 2018
  *
  */
 @Configuration
 public class ShiroConfig {
-    
+
     /**
-     * Shiro的Web过滤器Factory 命名:shiroFilter<br /> * * @param securityManager * @return
+     * Shiro的Web过滤器Factory 命名:shiroFilter
+     * @param securityManager 
+     * @return
      */
     @Bean(name = "shiroFilter")
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
@@ -64,7 +64,6 @@ public class ShiroConfig {
         return shiroFilterFactoryBean;
     }
 
-    
     @Bean
     public SecurityManager securityManager(MyRealm myRealm) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
@@ -84,7 +83,7 @@ public class ShiroConfig {
         EhCacheManager cacheManager = new EhCacheManager();
         return cacheManager;
     }
-    
+
     /**
      * 身份认证realm; (这个需要自己写，账号密码校验；权限等)
      *
@@ -95,7 +94,7 @@ public class ShiroConfig {
         MyRealm myShiroRealm = new MyRealm();
         return myShiroRealm;
     }
-    
+
     /***
      * 使授权注解起作用不如不想配置可以在pom文件中加入
      * <dependency>

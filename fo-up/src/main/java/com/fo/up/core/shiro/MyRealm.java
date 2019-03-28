@@ -19,6 +19,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fo.common.core.util.CollectionUtils;
+import com.fo.common.core.util.ExceptionExpectUtils;
 import com.fo.common.core.util.MD5Util;
 import com.fo.up.entity.UpPermission;
 import com.fo.up.entity.UpRole;
@@ -50,25 +51,23 @@ public class MyRealm extends AuthorizingRealm {
         user.setUsername(name);
         // 从数据库获取对应用户名密码的用户
         UpUser findUserByUsernameAndPassword = this.upUserService.findUserByUsernameAndPassword(user);
-        if (findUserByUsernameAndPassword != null) {
-            // 验证密码 
-            String salt = findUserByUsernameAndPassword.getSalt();
-            String md5 = MD5Util.md5(password + salt);
-            if (md5 == null || !md5.equals(findUserByUsernameAndPassword.getPassword())) {
-                throw new UnknownAccountException();
-            }
-            // 用户为禁用状态
-            if (findUserByUsernameAndPassword.getLocked() != 0) {
-                throw new DisabledAccountException();
-            }
-            SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                    findUserByUsernameAndPassword, //用户
-                    password, //密码
-                    getName()  //realm name
-            );
-            return authenticationInfo;
+        ExceptionExpectUtils.expectTrue(findUserByUsernameAndPassword != null, new UnknownAccountException());
+        // 验证密码 
+        String salt = findUserByUsernameAndPassword.getSalt();
+        String md5 = MD5Util.md5(password + salt);
+        if (md5 == null || !md5.equals(findUserByUsernameAndPassword.getPassword())) {
+            throw new UnknownAccountException();
         }
-        throw new UnknownAccountException();
+        // 用户为禁用状态
+        if (findUserByUsernameAndPassword.getLocked() != 0) {
+            throw new DisabledAccountException();
+        }
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
+                findUserByUsernameAndPassword, //用户
+                password, //密码
+                getName()  //realm name
+        );
+        return authenticationInfo;
     }
 
     /**
