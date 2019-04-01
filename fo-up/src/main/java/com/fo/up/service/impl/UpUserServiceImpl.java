@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,12 +35,19 @@ public class UpUserServiceImpl implements UpUserService {
      * @param id
      * @return
      */
+    @Cacheable(value = "aaa", key = "#id + 1", condition = "#id>0")
     @Override
     public UpUser getUserById(Long id) {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         return upUserRepository.findById(id).get();
     }
-
     /**
+     * 
      * 新增用户
      * 
      * @return

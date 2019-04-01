@@ -17,5 +17,5 @@ public class UpApplication {
 	    System.setProperty("spring.config.name", "fo-up" + File.separator + "application");
 		SpringApplication.run(UpApplication.class, args);
 	}
-	
+
 }

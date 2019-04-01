@@ -1,6 +1,7 @@
 package com.fo.up.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.fo.up.entity.UpUserRole;
@@ -14,6 +15,7 @@ public class UpUserRoleServiceImpl implements UpUserRoleService {
     private UpUserRoleRepository upUserRoleRepository;
 
     @Override
+    @Cacheable(value = "aaa", key = "#userId", condition = "#userId>0")
     public void addUserRole(Long userId, Long roleId) {
         UpUserRole upUserRole = new UpUserRole();
         upUserRole.setUserId(userId);

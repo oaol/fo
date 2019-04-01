@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fo.up.core.constant.UpResult;
 import com.fo.up.entity.UpUser;
+import com.fo.up.service.NumberService;
 import com.fo.up.service.UpUserService;
 
 @RestController
@@ -25,14 +26,25 @@ public class UpUserController {
 
     @Autowired
     private UpUserService upUserService;
+    
+    @Autowired
+    private NumberService numberService;
 
-    @GetMapping(value = "/{id}")
-    @RequiresPermissions("up:user:find")
+    @GetMapping(path = "/{id}")
+//    @RequiresPermissions("up:user:find")
     public UpResult<UpUser> getUserById(@PathVariable("id") Long id) {
         UpResult<UpUser> upResult = new UpResult<>();
         UpUser userById = this.upUserService.getUserById(id);
         upResult.setResults(userById);
     	return upResult;
+    }
+
+    @GetMapping(path = "/x/{id}")
+    public String getUser(@PathVariable Long id) {
+        UpResult<UpUser> upResult = new UpResult<>();
+        UpUser userById = this.numberService.getUserById(id);
+        upResult.setResults(userById);
+        return "";
     }
 
     @PostMapping
