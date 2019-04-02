@@ -2,8 +2,6 @@ package com.fo.up.service.impl;
 
 import java.util.UUID;
 
-import javax.transaction.Transactional;
-
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -11,6 +9,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fo.common.core.util.ExceptionExpectUtils;
 import com.fo.common.core.util.MD5Util;
@@ -53,19 +52,24 @@ public class UpUserServiceImpl implements UpUserService {
      * @return
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public UpUser addUser(UpUser user) {
-        ExceptionExpectUtils.expectTrue(StringUtils.isBlank(user.getUsername()), new UpException("用户名不能为空"));
-        ExceptionExpectUtils.expectTrue(upUserRepository.findUsername(user.getUsername()) != null,
+        ExceptionExpectUtils.expectTrue(StringUtils.isNotBlank(user.getUsername()), new UpException("用户名不能为空"));
+        ExceptionExpectUtils.expectTrue(upUserRepository.findUsername(user.getUsername()) == null,
                 new UpException("用户名不能重复"));
-        ExceptionExpectUtils.expectTrue(StringUtils.isBlank(user.getPassword()), new UpException("密码不能为空"));
-        ExceptionExpectUtils.expectTrue(user.getPassword().length() < 6, new UpException("密码至少六位"));
+        ExceptionExpectUtils.expectTrue(StringUtils.isNotBlank(user.getPassword()), new UpException("密码不能为空"));
+        ExceptionExpectUtils.expectTrue(user.getPassword().length() >= 6, new UpException("密码至少六位"));
 
         long time = System.currentTimeMillis();
         String salt = UUID.randomUUID().toString().replaceAll("-", "");
         user.setSalt(salt);
         user.setPassword(MD5Util.md5(user.getPassword() + user.getSalt()));
         user.setCtime(time);
-        return upUserRepository.save(user);
+        UpUser save = upUserRepository.save(user);
+        if (user.getUserId() != null) {
+            ExceptionExpectUtils.expectTrue(false, new UpException("哈哈"));
+        }
+        return save;
     }
 
     /*

@@ -30,8 +30,10 @@ import com.fo.up.service.UpRoleService;
 import com.fo.up.service.UpUserService;
 
 /**
- * ，Shiro框架初始化比Spring框架的某些部件早，导致使用@Autowire注入Shiro框架的某些类不能被Spring正确初始化。
- * 
+ * <p>
+ * Shiro框架初始化比Spring框架的某些部件早，导致使用@Autowire注入Shiro框架的某些类不能被Spring正确初始化。
+ * </p>
+ * <p>add @Lazy when inject interface， cache and @transactional anotation will be yingxiang</p>
  * @author bryce
  * @Date Apr 2, 2019
  */
