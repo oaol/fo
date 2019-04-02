@@ -38,9 +38,10 @@ dependencies {
     compile group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.13'
 
     compile('org.springframework.boot:spring-boot-starter-cache')
-    // https://mvnrepository.com/artifact/org.ehcache/ehcache
-    compile group: 'org.ehcache', name: 'ehcache', version: '3.7.0'
-    compile group: 'javax.cache', name: 'cache-api'
+    // ehcache 3.x
+    compile('org.ehcache:ehcache:3.7.0')
+    // JSR 107 - JCache API
+    compile('javax.cache:cache-api')
 }
 
 ext { 

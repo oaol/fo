@@ -17,6 +17,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 
 import com.fo.common.core.util.CollectionUtils;
 import com.fo.common.core.util.ExceptionExpectUtils;
@@ -28,22 +29,32 @@ import com.fo.up.service.UpPermissionService;
 import com.fo.up.service.UpRoleService;
 import com.fo.up.service.UpUserService;
 
+/**
+ * ，Shiro框架初始化比Spring框架的某些部件早，导致使用@Autowire注入Shiro框架的某些类不能被Spring正确初始化。
+ * 
+ * @author bryce
+ * @Date Apr 2, 2019
+ */
 public class MyRealm extends AuthorizingRealm {
 
     @Autowired
+    @Lazy
     private UpUserService upUserService;
 
     @Autowired
+    @Lazy
     private UpRoleService upRoleService;
-    
+
     @Autowired
+    @Lazy
     private UpPermissionService upPermissionService;
 
     /**
      * 鉴权
      */
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken)
+            throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         String name = token.getUsername();
         String password = String.valueOf(token.getPassword());
@@ -52,7 +63,7 @@ public class MyRealm extends AuthorizingRealm {
         // 从数据库获取对应用户名密码的用户
         UpUser findUserByUsernameAndPassword = this.upUserService.findUserByUsernameAndPassword(user);
         ExceptionExpectUtils.expectTrue(findUserByUsernameAndPassword != null, new UnknownAccountException());
-        // 验证密码 
+        // 验证密码
         String salt = findUserByUsernameAndPassword.getSalt();
         String md5 = MD5Util.md5(password + salt);
         if (md5 == null || !md5.equals(findUserByUsernameAndPassword.getPassword())) {
@@ -62,10 +73,9 @@ public class MyRealm extends AuthorizingRealm {
         if (findUserByUsernameAndPassword.getLocked() != 0) {
             throw new DisabledAccountException();
         }
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                findUserByUsernameAndPassword, //用户
-                password, //密码
-                getName()  //realm name
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(findUserByUsernameAndPassword, // 用户
+                password, // 密码
+                getName() // realm name
         );
         return authenticationInfo;
     }
