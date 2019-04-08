@@ -3,7 +3,7 @@ package com.fo.common.core.util;
 import java.util.function.Consumer;
 
 /**
- * due exception with what you want
+ * due exception with what you want for RuntimeException
  * 
  * @author bryce
  * @Date Mar 28, 2019

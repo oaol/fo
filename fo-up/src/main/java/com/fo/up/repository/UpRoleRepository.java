@@ -21,9 +21,8 @@ public interface UpRoleRepository extends JpaRepository<UpRole, Long>{
             + " from up_role ur "
             + " left join up_user_role uur on ur.role_id = uur.role_id " 
             +  "where uur.user_id = :userId", nativeQuery = true)
-          
     public List<UpRole> findRoleByUserId(@Param( value = "userId") Long userId);
-    
+
     /**
      * 更新角色
      */
