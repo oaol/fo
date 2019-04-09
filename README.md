@@ -34,3 +34,9 @@ JAVA_OPTS="$JAVA_OPTS -Dspring.config.location=xxx/fo-config/ -Xms256m -Xmx1024m
 
 ```
 
+## editorconfig
+
+see .editconfig file
+
+eclipse need install plugins
+
