@@ -15,7 +15,7 @@ public class ListContainsList {
     public static void main(String[] args) {
         List<Integer> newArrayList = CollectionUtils.newArrayList(1, 2, 3);
         List<Integer> newArrayList2 = CollectionUtils.newArrayList(3,1);
-        System.out.println(newArrayList.containsAll(newArrayList2));
+        System.out.println(newArrayList2.containsAll(newArrayList));
     }
 
 }
