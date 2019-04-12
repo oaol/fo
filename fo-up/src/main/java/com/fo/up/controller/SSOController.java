@@ -20,23 +20,16 @@ public class SSOController {
 
     @PostMapping("/login")
     public String login(@Valid @RequestBody UpUser upUser) {
-        Subject currentUser = SecurityUtils.getSubject();
-        // login already
-        if (currentUser.isAuthenticated()) {
-            return "already login";
-        }
-        //collect user principals and credentials in a gui specific manner
-        //such as username/password html form, X509 certificate, OpenID, etc.
-        //We'll use the username/password example here since it is the most common.
-        UsernamePasswordToken token = new UsernamePasswordToken(upUser.getUsername(), upUser.getPassword());
-        //this is all you have to do to support 'remember me' (no config - built in!):
-        token.setRememberMe(true);
-        currentUser.login(token);
-        return  "login sucess";
+        return loginByUsernamePasswordToken(upUser.getUsername(), upUser.getPassword());
     }
 
     @GetMapping("/login")
-    public String login(@RequestParam(name = "username", required = true) String username,@RequestParam(name = "password", required = true) String password) {
+    public String login(@RequestParam(name = "username", required = true) String username,
+             @RequestParam(name = "password", required = true) String password) {
+        return loginByUsernamePasswordToken(username, password);
+    }
+
+    private String loginByUsernamePasswordToken(String username, String password) {
         Subject currentUser = SecurityUtils.getSubject();
         if ( currentUser.isAuthenticated() ) {
             return "already login";
@@ -50,7 +43,6 @@ public class SSOController {
         token.setRememberMe(true);
         currentUser.login(token);
         return  "login sucess";
-        
     }
 
     @GetMapping("/role")

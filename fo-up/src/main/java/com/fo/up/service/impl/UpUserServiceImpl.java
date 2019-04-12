@@ -72,21 +72,6 @@ public class UpUserServiceImpl implements UpUserService {
         return save;
     }
 
-    /*
-     * @Override
-     *//**
-        * 更新用户
-        * 
-        * @return
-        *//*
-           * public UpUser addUser1(UpUser user) { if(user.getUserId() == null){ throw new
-           * UpException("传入user_id不能为空"); } boolean contains =
-           * upUserRepository.findUsername(user.getUsername()).contains(user.getUsername()
-           * ); if(contains){ throw new UpException("用户名不能重复"); } if
-           * (user.getPassword().length() < 6){ throw new UpException("密码至少六位"); } return
-           * upUserRepository.save(user); }
-           */
-
     /**
      * 更新用户
      */
@@ -99,12 +84,8 @@ public class UpUserServiceImpl implements UpUserService {
      * 根据id删除用户
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void deleteById(Long id) {
-        if (id == null) {
-            throw new UpException("删除时id不能为空");
-        }
-
         upUserRepository.deleteById(id);
         // delete role by user id
         this.upUserRoleRepository.deleteByUserId(id);

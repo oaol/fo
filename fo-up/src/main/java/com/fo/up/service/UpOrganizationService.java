@@ -2,34 +2,61 @@ package com.fo.up.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.fo.up.entity.UpOrganization;
 
+/**
+ * organization service
+ * 
+ * @author bryce
+ * @Date Apr 11, 2019
+ */
 public interface UpOrganizationService {
-	
-	
+
     /**
-     * 新增组织
+     * 
+     * add organization
+     * @param upOrganization
+     * @return
      */
     public UpOrganization addOrganization(UpOrganization upOrganization);
-    
+
     /**
-     * 删除组织
+     * 
+     * delete organization
+     * @param organizationId
      */
     public void deleteByOrganizationId(Long organizationId);
 
     /**
-     * 修改组织
+     * 
+     * udpate organizaiton by organization id
+     * @param upOrganization
      */
     public void updateByOrganization(UpOrganization upOrganization);
-    
+
     /**
-     * 查看组织
+     * 
+     * find organization by organization id
+     * @param organizationId
+     * return
      */
     public UpOrganization findByOrganizationId(Long organizationId);
-    
+
     /**
-	 * 根据userId查组织
-	 */
-	public List<UpOrganization> findOrganizationByUserId(Long userId);
-	
+     * 
+     * <p>find organizations by user id</p>
+     * @param userId
+     * @return
+     */
+    public List<UpOrganization> findOrganizationByUserId(Long userId);
+
+    /**
+     * <p>find organizatoin by page</p>
+     * 
+     * @return
+     */
+    public Page<UpOrganization> findOrganizationByPage(UpOrganization upOrganization, Pageable pageable);
 }

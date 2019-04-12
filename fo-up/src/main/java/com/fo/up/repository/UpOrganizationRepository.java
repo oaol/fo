@@ -34,4 +34,5 @@ public interface UpOrganizationRepository extends JpaRepository<UpOrganization, 
             + "  JOIN up_user_organization uo ON o.organization_id = uo.organization_id "
             + " WHERE uo.user_id=:userId", nativeQuery = true)
     public List<UpOrganization> findOrganizationByUserId(@Param("userId") Long userId);
+
 }

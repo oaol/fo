@@ -7,28 +7,28 @@ import java.io.Serializable;
  * @author bryce
  *
  */
-public class UpException extends RuntimeException implements Serializable{
+public class FoException extends RuntimeException implements Serializable{
 
     private static final long serialVersionUID = 1L;
     private int code;
     private String errorMessage;
     
-    public UpException(String message, Throwable cause) {
+    public FoException(String message, Throwable cause) {
         super(message, cause);
         this.code = 400;
     }
 
-    public UpException(String message) {
+    public FoException(String message) {
         super(message);
         this.code = 400;
     }
 
-    public UpException(int code, String message) {
+    public FoException(int code, String message) {
         super(message);
         this.code = code;
     }
 
-    public UpException() {
+    public FoException() {
         super();
     }
 

@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class UpUser implements Serializable{
+public class UpUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -37,39 +37,39 @@ public class UpUser implements Serializable{
     @Column(nullable = true)
     private Long ctime;// 创建时间
 
-	public Long getUserId() {
-		return userId;
-	}
+    public Long getUserId() {
+        return userId;
+    }
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public String getRealname() {
-		return realname;
-	}
+    public String getRealname() {
+        return realname;
+    }
 
-	public void setRealname(String realname) {
-		this.realname = realname;
-	}
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
 
-	public Long getCtime() {
-		return ctime;
-	}
+    public Long getCtime() {
+        return ctime;
+    }
 
-	public void setCtime(Long ctime) {
-		this.ctime = ctime;
-	}
+    public void setCtime(Long ctime) {
+        this.ctime = ctime;
+    }
 
-	public String getPassword() {
+    public String getPassword() {
         return password;
     }
 
@@ -84,8 +84,6 @@ public class UpUser implements Serializable{
     public void setSalt(String salt) {
         this.salt = salt;
     }
-
-  
 
     public String getAvatar() {
         return avatar;

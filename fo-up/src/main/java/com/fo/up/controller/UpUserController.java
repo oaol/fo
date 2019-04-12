@@ -1,6 +1,5 @@
 package com.fo.up.controller;
 
-
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,12 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fo.up.core.constant.UpResult;
 import com.fo.up.entity.UpUser;
 import com.fo.up.service.UpUserService;
 
 @RestController
-@RequestMapping(value="/user")
+@RequestMapping(value = "/user")
 public class UpUserController {
 
     @Autowired
@@ -28,40 +26,39 @@ public class UpUserController {
 
     @GetMapping(path = "/{id}")
     @RequiresPermissions("up:user:find")
-    public UpResult<UpUser> getUserById(@PathVariable("id") Long id) {
-        UpResult<UpUser> upResult = new UpResult<>();
+    public UpUser getUserById(@PathVariable( value = "id", required = true) Long id) {
         UpUser userById = this.upUserService.getUserById(id);
-        upResult.setResults(userById);
-    	return upResult;
+        return userById;
     }
 
     @PostMapping
-    public UpUser addUser(@RequestBody UpUser user){
-    	return upUserService.addUser(user);
+    @RequiresPermissions("up:user:add")
+    public UpUser addUser(@RequestBody UpUser user) {
+        return upUserService.addUser(user);
     }
 
     @PutMapping
-    public void updateUser(@RequestBody UpUser user){
-    	upUserService.updateUser(user);
+    @RequiresPermissions("up:user:update")
+    public void updateUser(@RequestBody UpUser user) {
+        upUserService.updateUser(user);
     }
 
     @DeleteMapping(value = "/{id}")
-    public void deleteById(@PathVariable("id") Long id){
-    	upUserService.deleteById(id);
+    @RequiresPermissions("up:user:delete")
+    public void deleteById(@PathVariable(value = "id", required = true) Long id) {
+        upUserService.deleteById(id);
     }
 
-    @GetMapping( value = "/page")
-    @RequiresPermissions(value = {"cms:article:create"})
-    public UpResult<Page<UpUser>> findUserByPage(@RequestParam(value = "username", required = false) String username, 
-            @RequestParam( value = "userId", required = false) Long userId,
-            @RequestParam( value = "page", required = false, defaultValue = "0") Integer page, 
-            @RequestParam( value = "pageSize", required = false, defaultValue = "12")Integer pageSize){
-    	UpUser upUser = new UpUser();
-    	upUser.setUserId(userId);
-    	upUser.setUsername(username);
-        UpResult<Page<UpUser>> upResult = new UpResult<Page<UpUser>>();
+    @GetMapping(value = "/page")
+    @RequiresPermissions("up:user:page")
+    public Page<UpUser> findUserByPage(@RequestParam(value = "username", required = false) String username,
+            @RequestParam(value = "userId", required = false) Long userId,
+            @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "12") Integer pageSize) {
+        UpUser upUser = new UpUser();
+        upUser.setUserId(userId);
+        upUser.setUsername(username);
         Page<UpUser> findUserByPage = upUserService.findUserByPage(upUser, PageRequest.of(page - 1, pageSize));
-        upResult.setResults(findUserByPage);
-        return upResult;
+        return findUserByPage;
     }
 }

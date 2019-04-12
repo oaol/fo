@@ -38,7 +38,6 @@ public class UpFileController {
     public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
         String fileName = fileStorageService.storeFile(file);
 
-        
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/file/downloadFile/")
                 .path(fileName).toUriString();
 
