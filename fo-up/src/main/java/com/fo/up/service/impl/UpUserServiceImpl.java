@@ -28,29 +28,12 @@ public class UpUserServiceImpl implements UpUserService {
     @Autowired
     private UpUserRoleRepository upUserRoleRepository;
 
-    /**
-     * 根据id查找user
-     * 
-     * @param id
-     * @return
-     */
-    @Cacheable(value = "aaa", key = "#id + 1", condition = "#id>0")
+    @Cacheable(value = "up", key = "# 'user-' + id")
     @Override
     public UpUser getUserById(Long id) {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
         return upUserRepository.findById(id).get();
     }
-    /**
-     * 
-     * 新增用户
-     * 
-     * @return
-     */
+
     @Override
     @Transactional(rollbackFor = Exception.class)
     public UpUser addUser(UpUser user) {
@@ -72,17 +55,11 @@ public class UpUserServiceImpl implements UpUserService {
         return save;
     }
 
-    /**
-     * 更新用户
-     */
     @Override
     public void updateUser(UpUser user) {
         upUserRepository.updateUser(user);
     }
 
-    /**
-     * 根据id删除用户
-     */
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void deleteById(Long id) {
@@ -91,9 +68,6 @@ public class UpUserServiceImpl implements UpUserService {
         this.upUserRoleRepository.deleteByUserId(id);
     }
 
-    /**
-     * 分页查询
-     */
     @Override
     public Page<UpUser> findUserByPage(UpUser upUser, Pageable pageable) {
         Example<UpUser> example = Example.of(upUser);

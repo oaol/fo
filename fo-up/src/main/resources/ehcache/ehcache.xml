@@ -5,7 +5,7 @@
             http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd
             http://www.ehcache.org/v3/jsr107 http://www.ehcache.org/schema/ehcache-107-ext-3.0.xsd">
 
-    <cache alias="aaa">
+    <cache alias="up">
         <key-type>java.lang.Long</key-type>
         <value-type>com.fo.up.entity.UpUser</value-type>
         <expiry>

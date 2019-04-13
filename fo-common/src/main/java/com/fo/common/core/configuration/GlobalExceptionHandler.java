@@ -19,16 +19,16 @@ import lombok.extern.slf4j.Slf4j;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> handleMethodArgumentNotValidException(Exception e) {
-        // TODO 准确的返回错误码
-        if (e instanceof FoException) {
-            log.info(((FoException) e).getErrorMessage() == null ? e.getMessage() : ((FoException) e).getErrorMessage(), e);
-            Map<String, Object> result = getErrorResponse(e);
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
-        } else {
-            log.error(e.getMessage(), e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("inner error!");
-        }
+    public ResponseEntity<?> handleException(Exception e) {
+        log.error(e.getMessage(), e);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("inner error!");
+    }
+
+    @ExceptionHandler(FoException.class)
+    public ResponseEntity<?> handleFoException(Exception e) {
+        log.info(((FoException) e).getErrorMessage() == null ? e.getMessage() : ((FoException) e).getErrorMessage(), e);
+        Map<String, Object> result = getErrorResponse(e);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
     }
 
     private Map<String, Object> getErrorResponse(Exception e) {

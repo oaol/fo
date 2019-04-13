@@ -41,7 +41,7 @@ spring:
     jcache:
       config: classpath:ehcache/ehcache.xml
     #缓存名称
-    cache-names: up
+    cache-names:
 server:
   port: 8089
   servlet:
