@@ -13,7 +13,10 @@ apply plugin: 'war'
 dependencies {
     compile project(':fo-common')
 
+    // mysql driver
 	runtime('mysql:mysql-connector-java')
+	// druid
+	compile('com.alibaba:druid-spring-boot-starter:1.1.16')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-data-redis')
 	compile('org.springframework.boot:spring-boot-starter-aop')
