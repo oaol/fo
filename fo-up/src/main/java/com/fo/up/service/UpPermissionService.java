@@ -10,19 +10,21 @@ import com.fo.up.entity.UpPermission;
 public interface UpPermissionService {
 
     /**
-     * 根据 user id 获取所有权限
+     * <p>根据 user id 获取所有权限</p>
+     * <p>user permission and role permission</p>
      * 
      * @param userId
      * @return
      */
     public List<UpPermission> findPermissionByUserId(Long userId);
-   
+
     /**
      * 查看权限
      * @param upPermissionId
      * @return
      */
     public UpPermission findByUpPermission(Long upPermissionId);
+
     /**
      * 新增权限
      * 

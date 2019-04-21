@@ -26,7 +26,7 @@ public class UpRoleController {
     private UpRoleService upRoleService;
 
     @GetMapping(value = "/user/{userId}")
-    @RequiresPermissions("up:role:find")
+//    @RequiresPermissions("up:role:find")
     public List<UpRole> findRoleByUserId(@PathVariable(value = "userId", required = true) Long userId) {
         return this.upRoleService.findRoleByUserId(userId);
     }

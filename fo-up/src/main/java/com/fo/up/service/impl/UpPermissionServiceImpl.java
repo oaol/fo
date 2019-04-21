@@ -24,12 +24,6 @@ public class UpPermissionServiceImpl implements UpPermissionService{
     @Autowired
     private UpUserRepository upUserRepository;
 
-    /**
-     * 根据 user id 获取所有权限
-     * 
-     * @param userId
-     * @return
-     */
     @Override
     public List<UpPermission> findPermissionByUserId(Long userId) {
         UpUser upUser = upUserRepository.findById(userId).get();

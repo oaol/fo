@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -28,7 +29,7 @@ public class UpUserServiceImpl implements UpUserService {
     @Autowired
     private UpUserRoleRepository upUserRoleRepository;
 
-    @Cacheable(value = "up", key = "# 'user-' + id")
+    @Cacheable(value = "up", key = "'user-' + #id")
     @Override
     public UpUser getUserById(Long id) {
         return upUserRepository.findById(id).get();

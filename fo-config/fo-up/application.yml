@@ -37,11 +37,14 @@ spring:
       # Max Request Size
       max-request-size: 215MB
   cache:
-    type: jcache
+    type: redis #jcache
     jcache:
       config: classpath:ehcache/ehcache.xml
     #缓存名称
     cache-names:
+  redis:
+    host: localhost
+    port: 6379
 server:
   port: 8089
   servlet:
@@ -60,3 +63,7 @@ up:
   base:
     pro1: ${spring.config.location}/11
     pro2: 8888888
+
+fo:
+  common:
+    projectName: ihfg
