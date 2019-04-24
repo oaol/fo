@@ -14,7 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class UpApplication {
 
     public static void main(String[] args) {
-        System.setProperty("spring.config.name", "fo-up" + File.separator + "application");
+       // System.setProperty("spring.config.name", "fo-up" + File.separator + "application");
         SpringApplication.run(UpApplication.class, args);
     }
 

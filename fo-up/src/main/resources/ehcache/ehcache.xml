@@ -1,31 +1,29 @@
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://www.ehcache.org/v3"
-    xmlns:jsr107="http://www.ehcache.org/v3/jsr107"
-    xsi:schemaLocation="
-            http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd
-            http://www.ehcache.org/v3/jsr107 http://www.ehcache.org/schema/ehcache-107-ext-3.0.xsd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns='http://www.ehcache.org/v3'
+    xsi:schemaLocation="http://www.ehcache.org/v3 
+    http://www.ehcache.org/schema/ehcache-core.xsd">
+    <!-- 缓存到磁盘使用的目录 -->
+    <persistence directory="/Users/bryce/tt"/>
+    <!-- 定义一个缓存仓库，alias也就是 @Cacheable 的 cacheNames 属性 -->
     <cache alias="up">
-        <key-type>java.lang.Long</key-type>
-        <value-type>com.fo.up.entity.UpUser</value-type>
+        <!--指定key的类型，@Cacheable 指定的key类型-->
+        <!-- <key-type>java.lang.Integer</key-type> -->
+        <!--指定返回类型，也就是方法返回的数据类型-->
+        <!-- <value-type>com.foo.User</value-type> -->
+        <!--
+            指定缓存的过期策略，tti,ttil,none。以及他们的单位时，分，秒，日
+            这里的配置表示，在缓存超过1H后没使用过，即删除
+        -->
         <expiry>
-            <ttl unit="seconds">30</ttl>
+            <tti unit="hours">1</tti>
         </expiry>
-
-        <listeners>
-            <listener>
-                <class>com.fo.up.config.CacheEventLogger</class>
-                <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
-                <event-ordering-mode>UNORDERED</event-ordering-mode>
-                <events-to-fire-on>CREATED</events-to-fire-on>
-                <events-to-fire-on>EXPIRED</events-to-fire-on>
-            </listener>
-        </listeners>
-
+        <!--
+            指定缓存的缓存位置，可以指定堆内存，堆外内存，磁盘，以及他们最大使用的空间
+            这里配置表示仅仅使用磁盘缓存
+        -->
         <resources>
-            <heap unit="entries">2</heap>
-            <offheap unit="MB">10</offheap>
+            <disk unit="GB" persistent="true">10</disk>
         </resources>
     </cache>
-
 </config>
