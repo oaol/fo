@@ -1,5 +1,7 @@
 package com.fo.up.controller;
 
+import java.util.Arrays;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fo.up.entity.UpUser;
 import com.fo.up.service.UpUserService;
 
@@ -30,6 +33,15 @@ public class UpUserController {
         UpUser userById = this.upUserService.getUserById(id);
         return userById;
     }
+
+    @GetMapping(path = "/role/{id}")
+//  @RequiresPermissions("up:user:find")
+  public JSONObject getRolesById(@PathVariable( value = "id", required = true) Long id) {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("roles", Arrays.asList("admin"));
+        jsonObject.put("name", "aa");
+      return jsonObject;
+  }
 
     @PostMapping
     @RequiresPermissions("up:user:add")

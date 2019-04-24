@@ -1,5 +1,7 @@
 package com.fo.up.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -25,6 +27,6 @@ public interface UpUserRepository extends JpaRepository<UpUser, Long> {
     @Query("select u.username from UpUser u where u.username = :username")
     public String findUsername(@Param(value = "username") String username);
 
-    public UpUser findUpUserByUsername(@Param(value = "username") String username);
+    public Optional<UpUser> findUpUserByUsername(@Param(value = "username") String username);
 
 }

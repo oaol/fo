@@ -64,15 +64,15 @@ public class SSOController {
         }
         return;
     }
+
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
+
+    @GetMapping("/redis")
+    public String testRedis() {
+        ValueOperations<String, String> opsForValue = redisTemplate.opsForValue();
+        opsForValue.set("a", "test");
+        return String.valueOf(opsForValue.get("a"));
+    }
     
-//    @Autowired
-//    private RedisTemplate<String, Object> redisTemplate;
-//
-//
-//    @GetMapping("/redis")
-//    public String testRedis() {
-//        Boolean hasKey = redisTemplate.hasKey("up");
-//        return String.valueOf(hasKey);
-//    }
-//    
 }

@@ -5,9 +5,9 @@
             %X{cus_id} %highlight{%d{yyyy-MM-dd HH:mm:ss.SSS} %p [%t] %c : %m%n%ex}{ERROR=red, WARN=blue, INFO=gray,
             DEBUG=green}
         </Property>
-        <Property name="LOG_LOCATION">
-            /logs/qrpusr/java/15011
-        </Property>
+        <!-- <Property name="LOG_LOCATION">
+            ./log
+        </Property> -->
     </Properties>
     <Loggers>
         <Root level="info">
