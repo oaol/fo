@@ -51,8 +51,8 @@ server:
     context-path: /up
 
 # log 可以获取 vm arguments
-logging:
-  config: ${spring.config.location}fo-up/log4j2-spring.xml
+#logging:
+#  config: ${spring.config.location}fo-up/log4j2-spring.xml
 
 ## File Storage Properties
 # All files uploaded through the REST API will be stored in this directory
