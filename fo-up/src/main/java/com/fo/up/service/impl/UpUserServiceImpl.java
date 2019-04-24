@@ -4,7 +4,6 @@ import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -32,7 +31,7 @@ public class UpUserServiceImpl implements UpUserService {
     @Cacheable(value = "up", key = "'user-' + #id")
     @Override
     public UpUser getUserById(Long id) {
-        return upUserRepository.findById(id).get();
+        return upUserRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -50,9 +49,6 @@ public class UpUserServiceImpl implements UpUserService {
         user.setPassword(MD5Util.md5(user.getPassword() + user.getSalt()));
         user.setCtime(time);
         UpUser save = upUserRepository.save(user);
-        if (user.getUserId() != null) {
-            ExceptionExpectUtils.expectTrue(false, new UpException("哈哈"));
-        }
         return save;
     }
 
@@ -77,7 +73,7 @@ public class UpUserServiceImpl implements UpUserService {
 
     @Override
     public UpUser findUserByUsernameAndPassword(UpUser upUser) {
-        UpUser user = this.upUserRepository.findUpUserByUsername(upUser.getUsername());
+        UpUser user = this.upUserRepository.findUpUserByUsername(upUser.getUsername()).orElse(null);
         return user;
     }
 
