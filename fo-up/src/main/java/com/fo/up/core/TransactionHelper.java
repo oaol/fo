@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * 函数式编程事务控制
  * 
  * @author bryce
  * @Date Apr 24, 2019
@@ -24,18 +23,13 @@ public class TransactionHelper {
         runnable.run();
     }
 
-    /**
-     * 
-     * @param supplier
-     * @return
-     */
-    @Transactional(propagation = Propagation.REQUIRES_NEW, noRollbackFor = Exception.class)
-    public <T> T withoutTransaction(Supplier<T> supplier) {
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public <T> T withNewTransaction(Supplier<T> supplier) {
         return supplier.get();
     }
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW, noRollbackFor = Exception.class)
-    public void withoutTransaction(Runnable runnable) {
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void withNewTransaction(Runnable runnable) {
         runnable.run();
     }
 }
