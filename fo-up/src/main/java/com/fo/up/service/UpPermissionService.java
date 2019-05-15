@@ -53,4 +53,12 @@ public interface UpPermissionService {
      * @param pageable
      */
     public Page<UpPermission> findPermissionByPage(UpPermission upPermission, Pageable pageable);
+
+    /**
+     * 根据 name 模糊查询
+     * 
+     * @param name
+     * @return
+     */
+    public List<UpPermission> findPermissionByName(String name);
 }

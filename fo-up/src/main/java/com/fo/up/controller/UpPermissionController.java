@@ -7,6 +7,8 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,7 +55,6 @@ public class UpPermissionController {
     	upPermissionService.updatePermission(upPermission);
     }
 
-    
     @DeleteMapping(value = "/{permissionId}")
     @RequiresPermissions("up:permission:delete")
     public void deleteById(@PathVariable(value = "permissionId", required = true) Long permissionId){
@@ -64,14 +65,21 @@ public class UpPermissionController {
     @RequiresPermissions("up:permission:page")
     public Page<UpPermission> findPermissionByPage(
             @RequestParam(value = "search", required = false) String name, 
-            @RequestParam( value = "permissionId", required = false) Long permissionId,
-            @RequestParam( value = "page", required = false, defaultValue = "0") Integer page, 
+            @RequestParam( value = "permissionId", required = false) Integer permissionId,
+            @RequestParam( value = "page", required = false, defaultValue = "1") Integer page, 
             @RequestParam( value = "pageSize", required = false, defaultValue = "12")Integer pageSize){
         UpPermission upPermission = new UpPermission();
         boolean blank = StringUtils.isBlank(name);
         upPermission.setName(blank? null: name);
         upPermission.setPermissionId(permissionId);
-        Page<UpPermission> findPermissionByPage = this.upPermissionService.findPermissionByPage(upPermission, PageRequest.of(page - 1, pageSize));
+        Sort sort = new Sort(Direction.DESC, "orders");
+        Page<UpPermission> findPermissionByPage = this.upPermissionService.findPermissionByPage(upPermission,
+                PageRequest.of(page - 1, pageSize, sort));
         return findPermissionByPage;
+    }
+
+    @GetMapping(value = "name")
+    public List<UpPermission> findPermissionByName(@RequestParam( value = "name", required = true)String name) {
+        return this.upPermissionService.findPermissionByName(name);
     }
 }

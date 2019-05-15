@@ -2,6 +2,8 @@ package com.fo.up.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,11 +13,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fo.up.entity.UpRole;
+import com.fo.up.entity.UpRolePermission;
 import com.fo.up.service.UpRoleService;
 
 @RestController
@@ -58,11 +62,17 @@ public class UpRoleController {
     @GetMapping("/page")
     @RequiresPermissions("up:role:page")
     public Page<UpRole> findUpRoleByPage(@RequestParam(value = "name", required = false) String name,
-            @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+            @RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
             @RequestParam(value = "pageSize", required = false, defaultValue = "12") Integer pageSize) {
         UpRole upRole = new UpRole();
         upRole.setName(name);
-        Page<UpRole> findRoleByPage = this.upRoleService.findRoleByPage(upRole, PageRequest.of(page, pageSize));
+        Page<UpRole> findRoleByPage = this.upRoleService.findRoleByPage(upRole, PageRequest.of(page - 1, pageSize));
         return findRoleByPage;
+    }
+
+    @PostMapping("/permission")
+    @RequiresPermissions("up:role:permission:add")
+    public UpRolePermission addRolePermission(@Valid @RequestBody UpRolePermission upRolePermission) {
+        return upRoleService.saveRolePermission(upRolePermission);
     }
 }
