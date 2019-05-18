@@ -88,8 +88,8 @@ public class UpPermissionServiceImpl implements UpPermissionService {
     }
 
     @Override
-    public List<UpPermission> findPermissionByName(String name) {
-        return this.upPermissionRepository.findUpPermissionByNameLike(name + "%");
+    public List<UpPermission> findPermissionByRoleIdAndName(String name, Integer roleId) {
+        return this.upPermissionRepository.findUpPermissionByNameLikeAndRoleId(name + "%", roleId);
     }
 
 }

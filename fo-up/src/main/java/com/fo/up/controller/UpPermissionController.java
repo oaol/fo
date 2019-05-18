@@ -78,8 +78,8 @@ public class UpPermissionController {
         return findPermissionByPage;
     }
 
-    @GetMapping(value = "name")
-    public List<UpPermission> findPermissionByName(@RequestParam( value = "name", required = true)String name) {
-        return this.upPermissionService.findPermissionByName(name);
+    @GetMapping(value = "/role/permission")
+    public List<UpPermission> findPermissionByRoleId(@RequestParam(value = "name", required = true) String name, @RequestParam(value = "roleId", required = true) Integer roleId) {
+        return this.upPermissionService.findPermissionByRoleIdAndName(name, roleId);
     }
 }

@@ -50,5 +50,9 @@ public interface UpPermissionRepository extends JpaRepository<UpPermission, Long
             + " WHERE p.permission_id = :#{#upPermission.permissionId}", nativeQuery = true)
     public void updateByUpPermissionId(@Param("upPermission") UpPermission upPermission);
 
-    public List<UpPermission> findUpPermissionByNameLike(String name);
+    @Query(value = "select up.* from up_permission up "
+            + "    left join up_role_permission urp on up.permission_id = urp.permission_id and urp.role_id = :roleId"
+            + "    where  urp.role_id is null and up.name like :name ", nativeQuery = true)
+    public List<UpPermission> findUpPermissionByNameLikeAndRoleId(@Param(value = "name") String name,
+            @Param(value = "roleId") Integer roleId);
 }
