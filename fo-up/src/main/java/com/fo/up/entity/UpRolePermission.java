@@ -18,10 +18,10 @@ public class UpRolePermission {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long rolePermissionId;
+    private Integer rolePermissionId;
     @Column(nullable = false)
-    private Long roleId;
+    private Integer roleId;
     @Column(nullable = false)
-    private Long permissionId;
+    private Integer permissionId;
 
 }
