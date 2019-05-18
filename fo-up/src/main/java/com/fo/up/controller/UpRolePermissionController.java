@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fo.up.entity.UpRolePermission;
 import com.fo.up.service.UpRolePermissionService;
 
@@ -21,12 +22,12 @@ public class UpRolePermissionController {
 
     @GetMapping("/page")
     @RequiresPermissions("up:role:permission:page")
-    public Page<UpRolePermission> findUpRoleByPage(@RequestParam(value = "roleId", required = false) Integer roleId,
+    public Page<JSONObject> findUpRoleByPage(@RequestParam(value = "roleId", required = false) Integer roleId,
             @RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
             @RequestParam(value = "pageSize", required = false, defaultValue = "12") Integer pageSize) {
         UpRolePermission upRolePermission = new UpRolePermission();
         upRolePermission.setRoleId(roleId);
-        Page<UpRolePermission> findRolePermissionByPage = this.upRolePermissionService
+        Page<JSONObject> findRolePermissionByPage = this.upRolePermissionService
                 .findRolePermissionByPage(upRolePermission, PageRequest.of(page - 1, pageSize));
         return findRolePermissionByPage;
     }

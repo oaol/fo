@@ -3,6 +3,7 @@ package com.fo.up.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fo.up.entity.UpRolePermission;
 
 /**
@@ -21,5 +22,5 @@ public interface UpRolePermissionService {
      * @param pageable
      * @return
      */
-    public Page<UpRolePermission> findRolePermissionByPage(UpRolePermission upRolePermission, Pageable pageable);
+    public Page<JSONObject> findRolePermissionByPage(UpRolePermission upRolePermission, Pageable pageable);
 }
