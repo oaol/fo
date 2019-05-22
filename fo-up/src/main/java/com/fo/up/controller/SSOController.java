@@ -1,6 +1,5 @@
 package com.fo.up.controller;
 
-import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.apache.shiro.SecurityUtils;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,10 +35,19 @@ public class SSOController {
         return loginByUsernamePasswordToken(username, password);
     }
 
+    @RequestMapping(path= "/logout", method = {RequestMethod.POST, RequestMethod.GET})
+    public void logout() {
+        Subject currentUser = SecurityUtils.getSubject();
+        currentUser.logout();
+    }
+
     private JSONObject loginByUsernamePasswordToken(String username, String password) {
         Subject currentUser = SecurityUtils.getSubject();
         if ( currentUser.isAuthenticated() ) {
-            return null;
+            JSONObject jsonObject = new JSONObject();
+            // TODO token: user id
+            jsonObject.put("token", "1");
+            return jsonObject;
         }
         //collect user principals and credentials in a gui specific manner
         //such as username/password html form, X509 certificate, OpenID, etc.
@@ -49,7 +58,7 @@ public class SSOController {
         token.setRememberMe(true);
         currentUser.login(token);
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("token","admin-token");
+        jsonObject.put("token","1");
         return  jsonObject;
     }
 

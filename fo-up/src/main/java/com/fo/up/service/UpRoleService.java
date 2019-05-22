@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.fo.up.entity.UpRole;
+import com.fo.up.entity.UpRolePermission;
 
 /**
  * role
@@ -54,4 +55,12 @@ public interface UpRoleService {
      * @return
      */
     public Page<UpRole> findRoleByPage(UpRole upRole, Pageable pageable);
+
+    /**
+     * add role permission
+     * 
+     * @param upRolePermission
+     * @return
+     */
+    public UpRolePermission saveRolePermission(UpRolePermission upRolePermission);
 }

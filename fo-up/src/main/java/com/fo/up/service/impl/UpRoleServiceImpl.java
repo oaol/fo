@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.fo.common.core.exception.FoException;
 import com.fo.up.entity.UpRole;
+import com.fo.up.entity.UpRolePermission;
 import com.fo.up.entity.UpUser;
+import com.fo.up.repository.UpRolePermissionRepository;
 import com.fo.up.repository.UpRoleRepository;
 import com.fo.up.repository.UpUserRepository;
 import com.fo.up.service.UpRoleService;
@@ -23,6 +25,9 @@ public class UpRoleServiceImpl implements UpRoleService {
 
     @Autowired
     private UpUserRepository upUserRepository;
+
+    @Autowired
+    private UpRolePermissionRepository upRolePermissionReporsitory;
 
     @Override
     public List<UpRole> findRoleByUserId(Long userId) {
@@ -64,4 +69,8 @@ public class UpRoleServiceImpl implements UpRoleService {
         return this.upRoleRepository.findAll(example, pageable);
     }
 
+    @Override
+    public UpRolePermission saveRolePermission(UpRolePermission upRolePermission) {
+        return this.upRolePermissionReporsitory.save(upRolePermission);
+    }
 }

@@ -3,6 +3,7 @@ package com.fo.up.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Data;
@@ -16,11 +17,11 @@ import lombok.ToString;
 public class UpRolePermission {
 
     @Id
-    @GeneratedValue
-    private Long rolePermissionId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer rolePermissionId;
     @Column(nullable = false)
-    private Long roleId;
+    private Integer roleId;
     @Column(nullable = false)
-    private Long permissionId;
+    private Integer permissionId;
 
 }

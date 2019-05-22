@@ -16,7 +16,7 @@ import com.fo.up.repository.UpUserRepository;
 import com.fo.up.service.UpPermissionService;
 
 @Service
-public class UpPermissionServiceImpl implements UpPermissionService{
+public class UpPermissionServiceImpl implements UpPermissionService {
 
     @Autowired
     private UpPermissionRepository upPermissionRepository;
@@ -28,29 +28,35 @@ public class UpPermissionServiceImpl implements UpPermissionService{
     public List<UpPermission> findPermissionByUserId(Long userId) {
         UpUser upUser = upUserRepository.findById(userId).get();
         if (null == upUser || upUser.getLocked() == 1) {
-            throw new FoException(String.format("不存在的用户 userId: %s", userId)) ;
+            throw new FoException(String.format("不存在的用户 userId: %s", userId));
         }
         return this.upPermissionRepository.findPermissionByUserId(userId);
     }
-    
+
     /**
      * 查看权限
+     * 
      * @param upPermissionId
      * @return
      */
     @Override
-	public UpPermission findByUpPermission(Long upPermissionId) {
-		return upPermissionRepository.findById(upPermissionId).get();
-	}
+    public UpPermission findByUpPermission(Long upPermissionId) {
+        return upPermissionRepository.findById(upPermissionId).get();
+    }
 
     /**
      * 新增权限
+     * 
      * @param upPermission
      */
     @Override
-	public UpPermission addPermission(UpPermission upPermission) {
-		return upPermissionRepository.save(upPermission);
-	}
+    public UpPermission addPermission(UpPermission upPermission) {
+        long currentTimeMillis = System.currentTimeMillis();
+        upPermission.setCtime(currentTimeMillis);
+        upPermission.setOrders(currentTimeMillis);
+        upPermission.setStatus(1);
+        return upPermissionRepository.save(upPermission);
+    }
 
     /**
      * 修改权限
@@ -59,7 +65,7 @@ public class UpPermissionServiceImpl implements UpPermissionService{
      */
     @Override
     public void updatePermission(UpPermission upPermission) {
-    	upPermissionRepository.updateByUpPermissionId(upPermission);
+        upPermissionRepository.updateByUpPermissionId(upPermission);
     }
 
     /**
@@ -81,8 +87,9 @@ public class UpPermissionServiceImpl implements UpPermissionService{
         return this.upPermissionRepository.findAll(example, pageable);
     }
 
-	
-	
+    @Override
+    public List<UpPermission> findPermissionByRoleIdAndName(String name, Integer roleId) {
+        return this.upPermissionRepository.findUpPermissionByNameLikeAndRoleId(name + "%", roleId);
+    }
 
-	
 }

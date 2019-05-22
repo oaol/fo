@@ -53,4 +53,13 @@ public interface UpPermissionService {
      * @param pageable
      */
     public Page<UpPermission> findPermissionByPage(UpPermission upPermission, Pageable pageable);
+
+    /**
+     * 根据 permission name 模糊查询用户未拥有的权限
+     * 
+     * @param name
+     * @param roleId
+     * @return
+     */
+    public List<UpPermission> findPermissionByRoleIdAndName(String name, Integer roleId);
 }
