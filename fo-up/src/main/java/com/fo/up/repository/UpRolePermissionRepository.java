@@ -15,6 +15,6 @@ public interface UpRolePermissionRepository extends JpaRepository<UpRolePermissi
     @Query( value = "select urp.role_id as roleId, urp.permission_id as permissionId ,ur.name as roleName, up.name as permissionName from up_role_permission as urp " + 
             "left join up_role as ur on urp.role_id = ur.role_id " + 
             "left join up_permission as up on urp.permission_id = up.permission_id " + 
-            "where urp.role_id = :roleId", nativeQuery = true)
+            "where 1 = 1 and if(:roleId is null or :roleId = '', 1 = 1, urp.role_id = :roleId)", nativeQuery = true)
     public Page<JSONObject> findRolePermissionByPage(@Param(value = "roleId") Integer roleId, Pageable pageable);
 }
