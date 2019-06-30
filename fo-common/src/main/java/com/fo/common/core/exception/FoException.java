@@ -47,4 +47,12 @@ public class FoException extends RuntimeException implements Serializable{
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
+
+    /**
+     * 用异常处理流程因为需要记录栈针会消耗性能，屏蔽战阵
+     */
+    @Override
+    public Throwable fillInStackTrace() {
+        return this;
+    }
 }
