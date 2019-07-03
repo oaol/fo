@@ -20,6 +20,7 @@ public class ListToMapTest {
 //        hashMap4.put("1", 1);
 //        hashMap5.put("1", 1);
         List<HashMap<Object, Object>> sss = Arrays.asList(hashMap, hashMap2, hashMap3, hashMap4, hashMap5);
+        
         Map<Object, Object> convertListToMap = sss.stream()
                 .collect(Collectors.toMap(a -> a.get("1"), Function.identity(),(entity1,entity2) -> entity1));
         System.out.println(convertListToMap);
