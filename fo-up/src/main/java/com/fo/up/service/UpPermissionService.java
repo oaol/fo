@@ -10,7 +10,8 @@ import com.fo.up.entity.UpPermission;
 public interface UpPermissionService {
 
     /**
-     * 根据 user id 获取所有权限
+     * <p>根据 user id 获取所有权限</p>
+     * <p>user permission and role permission</p>
      * 
      * @param userId
      * @return
@@ -18,18 +19,25 @@ public interface UpPermissionService {
     public List<UpPermission> findPermissionByUserId(Long userId);
 
     /**
+     * 查看权限
+     * @param upPermissionId
+     * @return
+     */
+    public UpPermission findByUpPermission(Long upPermissionId);
+
+    /**
      * 新增权限
      * 
      * @param upPermission
      */
-    public void createPermission(UpPermission upPermission);
+    public UpPermission addPermission(UpPermission upPermission);
 
     /**
      * 修改权限
      * 
      * @param upPermission
      */
-    public void alterPermission(UpPermission upPermission);
+    public void updatePermission(UpPermission upPermission);
 
     /**
      * 根据 id 删除 permission
@@ -45,4 +53,13 @@ public interface UpPermissionService {
      * @param pageable
      */
     public Page<UpPermission> findPermissionByPage(UpPermission upPermission, Pageable pageable);
+
+    /**
+     * 根据 permission name 模糊查询用户未拥有的权限
+     * 
+     * @param name
+     * @param roleId
+     * @return
+     */
+    public List<UpPermission> findPermissionByRoleIdAndName(String name, Integer roleId);
 }

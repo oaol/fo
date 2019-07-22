@@ -6,6 +6,9 @@
 target
 *.log
 *.log.*
-/build/
+build/
 *.settings
-/bin/
+bin/
+.gradle
+WEB-INF/
+.DS_Store

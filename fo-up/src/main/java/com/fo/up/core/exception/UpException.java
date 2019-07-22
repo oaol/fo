@@ -1,11 +1,17 @@
 package com.fo.up.core.exception;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import com.fo.common.core.exception.FoException;
+
 /**
  * common exception
  * @author bryce
  *
  */
-public class UpException extends RuntimeException {
+@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+public class UpException extends FoException {
 
     private static final long serialVersionUID = 1L;
     

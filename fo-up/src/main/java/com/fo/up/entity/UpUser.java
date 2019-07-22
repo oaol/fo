@@ -1,23 +1,29 @@
 package com.fo.up.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class UpUser {
+public class UpUser implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;// 编号
     @Column(nullable = false)
-    private String userName;// 帐号
+    private String username;// 帐号
     @Column(nullable = false)
     private String password;// 密码MD5(密码+盐)
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String salt;// 盐'
     @Column(nullable = true)
-    private String realName;// '姓名'
+    private String realname;// '姓名'
     @Column(nullable = true)
     private String avatar;// 头像
     @Column(nullable = true)
@@ -25,11 +31,11 @@ public class UpUser {
     @Column(nullable = true)
     private String email;// 邮箱
     @Column(nullable = true)
-    private int sex;// 性别
+    private Integer sex;// 性别
     @Column(nullable = true)
-    private int locked;// ״(状态(0:正常,1:锁定)
+    private Integer locked;// ״(状态(0:正常,1:锁定)
     @Column(nullable = true)
-    private long ctime;// 创建时间
+    private Long ctime;// 创建时间
 
     public Long getUserId() {
         return userId;
@@ -39,12 +45,28 @@ public class UpUser {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
+    public Long getCtime() {
+        return ctime;
+    }
+
+    public void setCtime(Long ctime) {
+        this.ctime = ctime;
     }
 
     public String getPassword() {
@@ -61,14 +83,6 @@ public class UpUser {
 
     public void setSalt(String salt) {
         this.salt = salt;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
     }
 
     public String getAvatar() {
@@ -95,19 +109,19 @@ public class UpUser {
         this.email = email;
     }
 
-    public int getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 
-    public int getLocked() {
+    public Integer getLocked() {
         return locked;
     }
 
-    public void setLocked(int locked) {
+    public void setLocked(Integer locked) {
         this.locked = locked;
     }
 
