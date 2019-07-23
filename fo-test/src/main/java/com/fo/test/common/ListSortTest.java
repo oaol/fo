@@ -6,6 +6,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class ListSortTest {
     public static void main(String[] args) {
@@ -24,18 +26,17 @@ public class ListSortTest {
         List<Map<String, Integer>> asList = Arrays.asList(a, b, c);
 
         System.out.println(asList);
-        asList.sort(new Comparator<Map<String,Integer>>() {
-            @Override
-            public int compare(Map<String, Integer> o1, Map<String, Integer> o2) {
-                return asList2.indexOf(o2.get("age")) - asList2.indexOf(o1.get("age"));
-            }
-         });
+//        asList.sort(new Comparator<Map<String,Integer>>() {
+//            @Override
+//            public int compare(Map<String, Integer> o1, Map<String, Integer> o2) {
+//                return asList2.indexOf(o2.get("age")) - asList2.indexOf(o1.get("age"));
+//            }
+//         });
 
         // Lambda version
-//        List<Map<String, Integer>> collect = asList.stream().sorted((x, y) -> {
-//            return asList2.indexOf(x.get("age")) - asList2.indexOf(y.get("age"));
-//        }).collect(Collectors.toList());
-
-        System.out.println(asList);
+        List<Map<String, Integer>> collect = asList.stream().sorted((x, y) -> {
+            return x.get("age") - y.get("age");
+        }).collect(Collectors.toList());
+        System.out.println(collect);
     }
 }

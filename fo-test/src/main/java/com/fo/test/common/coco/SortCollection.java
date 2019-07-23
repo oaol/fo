@@ -10,6 +10,9 @@ public class SortCollection {
 	public static void main(String[] args) {
 		/*//String [] arr =new String[6];
 		String [] arr ={"21","23","11","2"};
+
+
+		System.out.println(arr);
 		String string = Arrays.toString(arr);
 		System.out.println("string:"+string);*/
       
@@ -22,6 +25,10 @@ public class SortCollection {
 			return o1.length() - o2.length();
 		}
 	});
+		List<String> strings1 = Arrays.asList("1sss", "1y", "11", "33", "22");
+        System.out.println("strings:"+strings);
+       
+        Collections.sort(strings);
         System.out.println("strings:"+strings);
     }
 
