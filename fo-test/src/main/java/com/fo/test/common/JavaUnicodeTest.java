@@ -3,6 +3,7 @@ package com.fo.test.common;
 import org.apache.commons.lang3.StringUtils;
 
 /**
+ * Unicode 转义序列可以出现在 Java 程序的任意位置，而不只局限于字符和字符串字面量
  * java 对 UNICODE 字符支持的测试
  * @author bryce
  * @Date Jul 18, 2019
@@ -15,8 +16,11 @@ public class JavaUnicodeTest {
         String \u0061 = "1";
         \u0053\u0074\u0072\u0069\u006E\u0067\u0020\u0063 = "1";
         System.out.println(c);
-        String ss = charUnicode(' ');
+        String ss = charUnicode('中');
         System.out.println(ss);
+        boolean javaIdentifierStart = Character.isJavaIdentifierStart('$');
+        System.out.println(javaIdentifierStart);
+        System.out.println("11" +'\uffff' + "sss");
     }
 
     public static String charUnicode(Character ch) {
