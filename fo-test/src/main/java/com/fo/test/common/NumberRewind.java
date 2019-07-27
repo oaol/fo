@@ -8,7 +8,7 @@ package com.fo.test.common;
  */
 public class NumberRewind {
     public static void main(String[] args) {
-        byte b1 = 127, b2 = 1; // byte类型的最大值是127
+        byte b1 = 127, b2 = 3; // byte类型的最大值是127
         byte sum = (byte)(b1 + b2); // 加法运算的结果直接回绕到-128，即byte类型的最小值
         System.out.println(sum);
     }
