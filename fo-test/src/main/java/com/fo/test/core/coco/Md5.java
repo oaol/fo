@@ -1,4 +1,4 @@
-package com.fo.test.common.coco;
+package com.fo.test.core.coco;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

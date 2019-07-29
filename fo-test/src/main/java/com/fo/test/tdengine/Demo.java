@@ -19,10 +19,10 @@ public class Demo {
 
     public static Connection getConn() throws Exception {
         Class.forName("com.taosdata.jdbc.TSDBDriver");
-        String jdbcUrl = "jdbc:TAOS://127.0.0.1:6020/test?user=root&password=";
+        String jdbcUrl = "jdbc:TAOS://127.0.0.1:6035/test?user=root&password=taosdata";
         Properties connProps = new Properties();
         connProps.setProperty(TSDBDriver.PROPERTY_KEY_USER, "root");
-        connProps.setProperty(TSDBDriver.PROPERTY_KEY_PASSWORD, "");
+        connProps.setProperty(TSDBDriver.PROPERTY_KEY_PASSWORD, "taostata");
         connProps.setProperty(TSDBDriver.PROPERTY_KEY_CONFIG_DIR, "/etc/taos");
         connProps.setProperty(TSDBDriver.PROPERTY_KEY_CHARSET, "UTF-8");
         connProps.setProperty(TSDBDriver.PROPERTY_KEY_LOCALE, "en_US.UTF-8");

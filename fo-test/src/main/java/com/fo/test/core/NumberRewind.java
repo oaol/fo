@@ -1,4 +1,4 @@
-package com.fo.test.common;
+package com.fo.test.core;
 
 /**
  * 如果整数运算超出了指定整数类型的范围，不会上溢或下溢，而是直接回绕

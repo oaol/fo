@@ -1,4 +1,4 @@
-package com.fo.test.common.coco;
+package com.fo.test.core.coco;
 
 import java.util.Arrays;
 import java.util.Collections;

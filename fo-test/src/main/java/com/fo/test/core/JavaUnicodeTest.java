@@ -1,4 +1,4 @@
-package com.fo.test.common;
+package com.fo.test.core;
 
 import org.apache.commons.lang3.StringUtils;
 
