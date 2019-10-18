@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+ 
+<struts>
+    <!-- 表示从cn包下开始扫描 -->
+    <constant name="struts.convention.package.locators.basePackage" value="com"></constant>
+    <!-- 表示从cn包下开始加载注解 -->
+    <constant name="struts.convention.package.locators" value="com"></constant>
+    <!-- 表示struts的工厂类交给Spring实例 -->
+    <constant name="struts.objectFactory" value="spring"></constant>
+    <!-- 
+        SpringBoot集成struts2这个必须要配置  
+        表示不把SpringBoot内置Tomcat的类加载器排除在外  
+         默认是true 将类加载器排除了所以就算上面配置
+        如果这个没有配置就算运行不报错但是Action还是访问不了 
+    -->
+    <constant name="struts.convention.exclude.parentClassLoader" value="false"></constant>
+</struts>

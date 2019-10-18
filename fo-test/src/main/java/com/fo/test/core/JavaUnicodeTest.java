@@ -21,6 +21,8 @@ public class JavaUnicodeTest {
         boolean javaIdentifierStart = Character.isJavaIdentifierStart('$');
         System.out.println(javaIdentifierStart);
         System.out.println("11" +'\uffff' + "sss");
+        char sss = 'ฺ';
+        System.out.println(charUnicode(sss));
     }
 
     public static String charUnicode(Character ch) {

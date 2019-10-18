@@ -1,0 +1,69 @@
+spring:
+  datasource:
+    url: jdbc:mysql://47.104.199.14:3310/fo-up?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: r6QonmvQaulqE+Jau+IlEZCz8PEyMjotvMQGhkUeHb0bcPsc5Z1HYHlsBc2s3xdw0HfEtp37ODtBTG8n8LDaHw==
+    driver-class-name: com.mysql.jdbc.Driver
+    platform: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 1
+      minIdle: 3
+      maxActive: 20
+      maxWait: 5000
+      timeBetweenEvictionRunsMillis: 30000
+      minEvictableIdleTimeMillis: 30000
+      validation-query: select 1 from dual
+      # password crypt must enabled this
+      filter:
+        config:
+          enabled: true
+      connection-properties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAL15NZH/7HWSi7rrC+E1Bf1oIqNDpGXYamurKANv6SrRl7g3dkFljdeNEwHOII3ycvdIzKlNKuvpDeueRSXo5bkCAwEAAQ==
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+#        hbm2ddl:
+#          auto: update
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  servlet:
+    multipart:
+      # Enable multipart uploads
+      enabled: true
+      # xThreshold after which files are written to disk.
+      file-size-threshold: 2KB
+      # Max file size.
+      max-file-size: 200MB
+      # Max Request Size
+      max-request-size: 215MB
+  cache:
+    type: redis #jcache
+    jcache:
+      config: classpath:ehcache/ehcache.xml
+    #缓存名称
+    cache-names:
+  redis:
+    host: localhost
+    port: 6379
+server:
+  port: 8090
+  servlet:
+    context-path: /up
+
+# log 可以获取 vm arguments
+logging:
+  config: ${spring.config.location}fo-up/log4j2-spring.xml
+
+## File Storage Properties
+# All files uploaded through the REST API will be stored in this directory
+up:
+  file:
+    upload-dir: ./uploads
+  test: koko
+  base:
+    pro1: ${spring.config.location}/11
+    pro2: 8888888
+
+fo:
+  common:
+    projectName: ihfg

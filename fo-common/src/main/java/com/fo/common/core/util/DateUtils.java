@@ -1,11 +1,8 @@
 package com.fo.common.core.util;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import org.assertj.core.util.Lists;
 
 import com.fo.common.core.constant.WeekEnum;
 

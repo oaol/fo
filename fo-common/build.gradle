@@ -3,7 +3,7 @@ jar{
     enabled = true
 }
 dependencies {
-    compile('com.alibaba:fastjson:1.2.49')
+    compile('com.alibaba:fastjson:1.2.26')
     compile('org.apache.commons:commons-lang3:3.4')
     compile('org.springframework.boot:spring-boot-starter-web')
 }

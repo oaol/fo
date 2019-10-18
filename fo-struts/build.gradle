@@ -1,0 +1,78 @@
+plugins {
+    // restdocs
+    id "org.asciidoctor.convert" version "1.5.3"
+}
+
+description = 'fo-struts-test'
+
+bootJar {
+      mainClassName = 'com.fo.up.StrutsApplication'
+}
+apply plugin: 'war'
+
+dependencies {
+    compile('com.alibaba:fastjson:1.2.49')
+    compile('org.apache.commons:commons-lang3:3.4')
+
+    // mysql driver
+	runtime('mysql:mysql-connector-java')
+	// druid
+	compile('com.alibaba:druid-spring-boot-starter:1.1.16')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-data-redis')
+	compile('org.springframework.boot:spring-boot-starter-aop')
+	// provide tomcat
+	providedCompile('org.springframework.boot:spring-boot-starter-tomcat')
+
+    compile('com.alibaba:fastjson:1.2.49')
+
+    // restdocs
+    asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor:2.0.0.RELEASE'
+    testCompile 'org.springframework.restdocs:spring-restdocs-mockmvc:2.0.0.RELEASE'
+
+    // spring shiro
+    compile group: 'org.apache.shiro', name: 'shiro-spring', version: '1.4.0'
+    compile group: 'org.apache.shiro', name: 'shiro-ehcache', version: '1.4.0'
+    compile group: 'org.apache.poi', name: 'poi', version: '3.15'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.15'
+    compile group: 'com.alibaba', name: 'easyexcel', version: '1.0.0-RELEASE'
+
+
+    // https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox
+    compile group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.13'
+
+    compile('org.springframework.boot:spring-boot-starter-cache')
+    // ehcache 3.x
+    compile('org.ehcache:ehcache:3.7.0')
+    // JSR 107 - JCache API
+    compile('javax.cache:cache-api')
+    
+    compile('org.apache.struts:struts2-core:2.5.20')
+    compile('org.apache.struts:struts2-spring-plugin:2.5.20')
+    compile('org.apache.struts:struts2-convention-plugin:2.5.20')
+    compile('javax.servlet.jsp:jsp-api:2.2.1-b03')
+    compile('javax.servlet:jstl:1.2')
+}
+
+ext {
+    // restdocs
+    snippetsDir = file('build/generated-snippets')
+}
+// restdocs
+test {
+    outputs.dir snippetsDir
+}
+//restdocs
+asciidoctor {
+    inputs.dir snippetsDir
+    dependsOn test
+    //outputDir file('build/docs/rest/output')
+    attributes 'snippets': file('build/generated-snippets')
+}
+
+jar {
+    dependsOn asciidoctor
+    from ("${asciidoctor.outputDir}/html5") {
+        into 'static/docs'
+    }
+}
